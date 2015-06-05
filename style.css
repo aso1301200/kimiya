@@ -119,3 +119,55 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 #header-widget-area .searchform input#searchsubmit {
 	display: none;
 }
+
+/* admin ----------------------------------------------------*/
+.post{
+    background:#ff;
+    padding: 15px;
+    width:550px;
+    margin-bottom:40px;
+    clear:both;
+
+    border: 1px solid #f0f0f0;
+    border-bottom: 2px solid #ccc;
+    /* IE以外なら丸角も！ */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    overflow : hidden;
+
+}
+
+.post p{
+
+
+}
+
+h4{
+	/*border: 1px solid #000000;*/
+	margin-bottom: 8px;
+    width:350px;
+    float: right;
+}
+
+img {
+    width: 120px;
+    float: left;
+    padding :5px ;
+    background:#fff;
+    margin:10px; /* テキストとの距離 */
+
+    border: 1px solid #f0f0f0;
+    border-bottom: 2px solid #ccc;
+    /* IE以外なら丸角も！ */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.more{
+    float: right;
+
+}
+
