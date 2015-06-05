@@ -47,7 +47,7 @@
 		<table class="table-tag">
 			<tr>
 				<td>
-				<div id="header-tag">ホーム</div>
+				<div id="header-tag">ホームa</div>
 				</td>
 				<td>
 				<div id="header-tag">ご利用案内</div>
