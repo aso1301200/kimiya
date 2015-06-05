@@ -119,3 +119,24 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 #header-widget-area .searchform input#searchsubmit {
 	display: none;
 }
+
+table.table-tag{
+	width: 100%;
+}
+
+table.table-tag td{
+	width: 12.5%;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 40px;
+	color: #ffffff;
+	background: #22afcd;
+	border-top: 5px solid #113388;
+	border-right: 5px solid #113388;
+	border-left: 5px solid #113388;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+
+
+}

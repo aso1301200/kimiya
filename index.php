@@ -36,6 +36,50 @@
 		</div><!-- .header-inner -->
 
 	</div><!-- #masthead -->
+	<p>
+		<div id="header-top-image">
+			<img src="">トップ		<!-- トップの上部のおしゃれな絵 -->
+		</div>
+	</p>
+
+	<!-- タグ部 -->
+	<p>
+		<table class="table-tag">
+			<tr>
+				<td>
+				<div id="header-tag">ホーム</div>
+				</td>
+				<td>
+				<div id="header-tag">ご利用案内</div>
+				</td>
+				<td>
+				<div id="header-tag">新規会員登録</div>
+				</td>
+				<td>
+				<div id="header-tag">注文商品紹介</div>
+				</td>
+				<td>
+				<div id="header-tag">買い物かご</div>
+				</td>
+				<td>
+				<div id="header-tag">サイトマップ</div>
+				</td>
+				<td>
+				<div id="header-tag">問い合わせ</div>
+				</td>
+			</tr>
+		</table>
+	</p>
+
+	<!-- 商品一覧部分 -->
+	<p>
+		<div id="goods-space">
+			<table border="1">
+				<tr><td><a href=""><img src="">a</a></td><td><a href=""><img src="">b</a></td><td><a href=""><img src="">c</a></td><td><a href=""><img src="">d</a></td></tr>
+				<tr><td><a href=""><img src="">e</a></td><td><a href=""><img src="">f</a></td><td><a href=""><img src="">g</a></td><td><a href=""><img src="">h</a></td></tr>
+			</table>
+		</div>
+	</p>
 </div>
 </body>
 </html>
