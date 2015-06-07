@@ -49,33 +49,19 @@
 		</div>
 	</p>
 
-	<!-- タグ部 -->
+	<!-- タグ部メニュー -->
 	<p>
-		<table class="table-tag">
-			<tr>
-				<td>
-				<div id="header-tag">ホームa</div>
-				</td>
-				<td>
-				<div id="header-tag">ご利用案内</div>
-				</td>
-				<td>
-				<div id="header-tag">新規会員登録</div>
-				</td>
-				<td>
-				<div id="header-tag">注文商品紹介</div>
-				</td>
-				<td>
-				<div id="header-tag">買い物かご</div>
-				</td>
-				<td>
-				<div id="header-tag">サイトマップ</div>
-				</td>
-				<td>
-				<div id="header-tag">問い合わせ</div>
-				</td>
-			</tr>
-		</table>
+		<div class="cssmenu">
+		<ul>
+				<li class='active'><a href='#'><span>ホーム</span></a></li>
+				<li><a href='#'><span>ご利用案内</span></a></li>
+				<li><a href='#'><span>新規会員登録</span></a></li>
+				<li><a href='#'><span>注文商品紹介</span></a></li>
+				<li><a href='#'><span>買い物かご</span></a></li>
+				<li><a href='#'><span>サイトマップ</span></a></li>
+				<li class='last'><a href='#'><span>問い合わせ</span></a></li>
+		</ul>
+		</div>
 	</p>
 
 	<!-- 商品一覧部分 -->
