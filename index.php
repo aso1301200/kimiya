@@ -52,7 +52,7 @@
 
 	<!-- タグ部メニュー -->
 	<p>
-		<div class="cssmenu">
+		<div id="cssmenu">
 		<ul>
 				<li class='active'><a href='#'><span>ホーム</span></a></li>
 				<li><a href='#'><span>ご利用案内</span></a></li>
