@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+@font-face {
+    font-family: "cine";
+    src: url("cinecaption2.28/cinecaption2.28.ttf") format("truetype");
+}
+
 /* =Reset
 -------------------------------------------------------------- */
 
@@ -15,9 +20,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
+	font-family: "cine";
 }
-
-
 
 /* Clearing floats */
 .clear:after,
@@ -121,10 +125,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 }
 
 /* admin ----------------------------------------------------*/
-.post{
-    background:#ff;
+
+#admin{
+	position: absolute;
+	right: 450px; left: 450px;
+	background-color: #CEF6F5;
+}
+
+h1{
+	margin: 10px;
+}
+
+#admin .post{
+    background:#ffffff;
     padding: 15px;
-    width:550px;
+    width: 650px;
     margin-bottom:40px;
     clear:both;
 
@@ -144,14 +159,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 }
 
-h4{
+h3{
 	/*border: 1px solid #000000;*/
 	margin-bottom: 8px;
     width:350px;
     float: right;
 }
 
-img {
+#admin_image {
     width: 120px;
     float: left;
     padding :5px ;
