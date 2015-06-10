@@ -127,19 +127,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 /* admin ----------------------------------------------------*/
 
 #admin{
-	position: absolute;
-	right: 450px; left: 450px;
-	background-color: #CEF6F5;
+	background-color: #FAFAFA;
 }
 
-h1{
-	margin: 10px;
+.contents{
+	padding: 10px;
+	margin: auto;
+	width: 670px;
 }
 
 #admin .post{
     background:#ffffff;
     padding: 15px;
     width: 650px;
+    margin:auto;
+    margin-top:10px;
     margin-bottom:40px;
     clear:both;
 
@@ -152,18 +154,6 @@ h1{
 
     overflow : hidden;
 
-}
-
-.post p{
-
-
-}
-
-h3{
-	/*border: 1px solid #000000;*/
-	margin-bottom: 8px;
-    width:350px;
-    float: right;
 }
 
 #admin_image {
