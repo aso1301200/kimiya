@@ -31,16 +31,10 @@
 	$sdb = mysql_select_db($db,$link) or die("データベースの選択に失敗しました。");
 
 	// クエリを送信する
-	
+	//文字化け対策
+	mysql_query("SET NAMES 'utf8'");
 	//詳細、画像などを含めた商品情報のすべて
-	$sql = "SELECT * "
-		+ "FROM goods g, goods_details gd, goods_photo gp, photo p, direction d "
-		+ "WHERE g.goods_number = gd.goods_number "
-		+ "AND gd.goods_details_number = gp.goods_details_number "
-		+ "AND gp.photo_number = p.photo_number "
-		+ "AND gp.direction_code = d.direction_code "
-		+ "AND d.direction_code = '2';";
-	$result = mysql_query($sql, $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
+	$result = mysql_query("SELECT g.goods_number,g.goods_name,p.photo_name FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
 	//結果セットの行数を取得する
 	$rows = mysql_num_rows($result);
@@ -98,22 +92,30 @@
 	<p>
 		<div id="goods-space">
 			<table border="1">
-				<?php 
+				<?php
 					for ($count = 0;$count < 8;$count++){
 						if($count < $rows){
-							
+							//SELECT文から1行取得し配列"$array"に代入
+							$array = mysql_fetch_array($result,MYSQL_BOTH);
+							if($count == 0 || $count == 4){
+								print "<tr>";
+							}
+							printf( "<td><a href=\"%s\"><img src=\"images/test_images/%s\">%s</a><td>",$array["goods_number"],$array["photo_name"],$array["goods_name"]);
+							if($count == 3 || $count == 7){
+								print "</tr>";
+							}
+						}else{
+							break;
 						}
 					}
-					
+
 					//結果保持用メモリを開放する
 					mysql_free_result($result);
-					
+
 					// MySQLへの接続を閉じる
 					mysql_close($link) or die("MySQL切断に失敗しました。");
-					
+
 				?>
-				<tr><td><a href=""><img src="">a</a></td><td><a href=""><img src="">b</a></td><td><a href=""><img src="">c</a></td><td><a href=""><img src="">d</a></td></tr>
-				<tr><td><a href=""><img src="">e</a></td><td><a href=""><img src="">f</a></td><td><a href=""><img src="">g</a></td><td><a href=""><img src="">h</a></td></tr>
 			</table>
 		</div>
 	</p>
