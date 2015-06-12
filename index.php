@@ -100,7 +100,7 @@
 							if($count == 0 || $count == 4){
 								print "<tr>";
 							}
-							printf( "<td><a href=\"%s\"><img src=\"images/test_images/%s\">%s</a><td>",$array["goods_number"],$array["photo_name"],$array["goods_name"]);
+							printf( "<td><a href=\"%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_number"],$array["photo_name"],$array["goods_name"]);
 							if($count == 3 || $count == 7){
 								print "</tr>";
 							}

@@ -192,5 +192,14 @@ table.table-tag td{
 
 
 }
+
+/*----ここにトップ画面の商品一覧の画像の下に文字を回り込む設定をする----*/
+img.img_goods{
+	float: none;
+}
+
+.text-goods{
+	clear: both;
+}
 /*----ここまでが競合修正----*/
 
