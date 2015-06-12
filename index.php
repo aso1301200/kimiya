@@ -69,7 +69,7 @@
 	</div><!-- #masthead -->
 	<p>
 		<div id="header-top-image">
-			<img src="">トップ		<!-- トップの上部のおしゃれな絵 -->
+			<img src="images/">トップ		<!-- トップの上部のおしゃれな絵 -->
 		</div>
 	</p>
 
