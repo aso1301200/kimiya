@@ -77,7 +77,7 @@
 	<p>
 		<div id="cssmenu">
 		<ul>
-				<li class='active'><a href='#'><span>ホーム</span></a></li>
+				<li><a href='#'><span>ホーム</span></a></li>
 				<li><a href='#'><span>ご利用案内</span></a></li>
 				<li><a href='#'><span>新規会員登録</span></a></li>
 				<li><a href='#'><span>注文商品紹介</span></a></li>
