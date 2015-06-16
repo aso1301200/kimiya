@@ -59,15 +59,15 @@
 						<input type="text" value="" name="s" id="s">
 						<input type="submit" id="searchsubmit" value="検索">
 					</div>					</form>
+
+			</div><!-- #header-widget-area -->
+
+
 					<div id="header-top-image">
 						<img src="images/test_images/test_top.png"><!-- トップの上部のおしゃれな絵 -->
 					</div>
 
-
-			</div><!-- #header-widget-area -->
-
-			<div class="clear"></div>
-
+					<div class="clear"></div>
 		</div><!-- .header-inner -->
 
 	</div><!-- #masthead -->
