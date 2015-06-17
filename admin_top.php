@@ -65,9 +65,9 @@
 		</div>
 	</p>
 
-	<!-- 商品一覧部分 -->
+	<!-- 管理者 -->
 	<div id="admin">
-		<div class="contents">
+		<div id="contents_admin">
 			<div><h2>商品追加</h2></div>
 			<div class="post">
 					<img src="images/sample_logo_01.png" alt=""  id="admin_image"/>

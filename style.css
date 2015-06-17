@@ -43,6 +43,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 #wpadminbar {
 	position: fixed;
 }
+#page{
+	width:100%;
+}
 
 
 /* Mast Head ----------------------------------------------------*/
@@ -136,7 +139,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	background-color: #FAFAFA;
 }
 
-.contents{
+#contents_admin{
 	padding: 10px;
 	margin: auto;
 	width: 670px;
@@ -213,4 +216,109 @@ img.img_goods{
 	clear: both;
 }
 /*----ここまでが競合修正----*/
+
+/*item_top--------------------------------------------------------------*/
+.contents_item{
+	height: 600px;
+	background-color: #FAFAFA;
+	margin: 0px;
+}
+
+#item_list{
+	width: 80%;
+	margin: 10px auto;
+}
+
+#item_list ul {
+  list-style: none;
+  top: 0;
+  height: 280px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  letter-spacing: -1em;
+}
+
+#item_listul li,
+#item_listul li dl {
+  width: 280px;
+  height: 260px;
+}
+
+#item_list li {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 7px;
+  letter-spacing: 0;
+}
+
+#item_list dl {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 20px 25px;
+  color: #fff;
+  background: rgba(205,92,92,.9);
+}
+
+#item_list ul dl dt {
+  margin-bottom: 0.3em;
+}
+
+#item_list ul dl dd {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: justify;
+  word-break: break-all;
+}
+
+#item_list ul dl dd:last-of-type {
+  margin-top: 10px;
+  text-align: right;
+}
+
+#item_list ul a {
+  padding: 0.3em 0.5em;
+  background-color: #fff;
+  color: lightSeaGreen;
+}
+
+#item_list ul a:hover {
+  color: indianRed;
+  text-decoration: none;
+}
+
+#item_top_image{
+	width: 280px;
+    height: 260px;
+    border: 1px solid #f0f0f0;
+    border-bottom: 2px solid #ccc;
+    /* IE以外なら丸角も！ */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* type1 */
+.type1 dl {
+  width: 280px;
+  height: 260px;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: opacity 0.6s, -webkit-transform 0.6s;
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.type1:hover dl {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+
 
