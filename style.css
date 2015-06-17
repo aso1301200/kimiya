@@ -196,6 +196,8 @@ table.table-tag td{
 
 /*----ここにトップ画面の商品一覧の画像の下に文字を回り込む設定をする----*/
 img.img_goods{
+	width: 200px;
+	height: 130px;
 	float: none;
 }
 
@@ -205,8 +207,38 @@ img.img_goods{
 
 /*----トップの画像に関する設定----*/
 #header-top-image{
+	/*border: 1px solid #000000;*/
+	margin: 0px;
+	padding: 0px;
 	width: 100%;
+	height: 75px;
+	float: none;
 }
 
+/*----商品一覧の表示を中央に----*/
+table.goods-table{
+	margin: 0 auto;
+	text-align: left;
 
+}
 
+/*----ログイン用の入力フォーム----*/
+#header-login-form{
+	margin: 1px;
+	padding: 0px;
+	width: 100%;
+	height: 50px;
+	text-align: right;
+}
+
+#form-id :focus{
+	border-width: 5px;
+	outline-width: 5px;
+	border-color: #22afcd;
+}
+
+#form-password :focus{
+	border-width: 5px;
+	outline-width: 5px;
+	border-color: #22afcd;
+}

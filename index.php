@@ -50,27 +50,42 @@
 
 				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
 
+				<div id="header-login-form">
+					<form method="post" action="">
+						ログイン
+						ID:<input type="text" value="" name="id" id="form-id">
+						パスワード:<input type="password" value="" name="password" id="form-password">
+						<input type="submit" value="ログイン">
+					</form>
+				</div>
+
 			</div><!-- #header-title-area -->
 
 			<div id="header-widget-area">
 
+<!-- 検索フォームの位置替えのためコメントアウト
 				<form role="search" method="get" id="searchform" class="searchform" action="*******">
 					<div>
 						<input type="text" value="" name="s" id="s">
 						<input type="submit" id="searchsubmit" value="検索">
-					</div>					</form>
+					</div>
+				</form>
+
+-->
 
 			</div><!-- #header-widget-area -->
 
 
 					<div id="header-top-image">
-						<img src="images/test_images/test_top.png"><!-- トップの上部のおしゃれな絵 -->
+						<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
 					</div>
 
-					<div class="clear"></div>
+
 		</div><!-- .header-inner -->
 
 	</div><!-- #masthead -->
+
+	<div class="clear"></div>
 
 	<!-- タグ部メニュー -->
 	<p>
@@ -89,8 +104,7 @@
 
 	<!-- 商品一覧部分 -->
 	<p>
-		<div id="goods-space">
-			<table border="1">
+			<table border="1" class="goods-table">
 				<?php
 					for ($count = 0;$count < 8;$count++){
 						if($count < $rows){
@@ -116,7 +130,6 @@
 
 				?>
 			</table>
-		</div>
 	</p>
 </div>
 </body>
