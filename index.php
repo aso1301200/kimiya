@@ -51,7 +51,7 @@
 				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
 
 				<div id="header-login-form">
-					<form method="post" action="">
+					<form method="post" action="l">
 						ログイン
 						ID:<input type="text" value="" name="id" id="form-id">
 						パスワード:<input type="password" value="" name="password" id="form-password">
