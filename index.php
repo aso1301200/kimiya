@@ -77,7 +77,7 @@
 
 
 					<div id="header-top-image">
-						<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
+						あああああ<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
 					</div>
 
 
