@@ -221,12 +221,12 @@ img.img_goods{
 .contents_item{
 	height: 600px;
 	background-color: #FAFAFA;
-	margin: 0px;
+	padding: 10px;
 }
 
 #item_list{
 	width: 80%;
-	margin: 10px auto;
+	margin: auto;
 }
 
 #item_list ul {
