@@ -58,34 +58,58 @@
 
 	<div class="contents_item">
 
-	<!-- 商品詳細画面 -->
-	<div id="item_list">
+	<div id="item_center">
+		<!-- カテゴリ検索欄 -->
+		<div id="item_category">
 		<ul>
-	    <li class="type1">
-	      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-	      <dl>
-	        <dt>Placehold.it</dt>
-	        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
-	        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-	      </dl>
-	    </li>
-	    <li class="type1">
-	      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-	    	      <dl>
-	        <dt>Placehold.it</dt>
-	        <dd>「http://placehold.it/[SIZE]/[BGCOLOR]/[TEXTCOLOR]&text=[DUMMYTEXT]」というようなURLで、任意のダミー画像を生成してくれてとっても便利。</dd>
-	        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-	      </dl>
-	    </li>
-	    <li class="type1">
-	      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-	    	      <dl>
-	        <dt>Placehold.it</dt>
-	        <dd>このダミー画像の場合は「http://placehold.it/200x180/20b2aa/ffffff&text=image」という具合。</dd>
-	        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-	      </dl>
-	    </li>
-	  </ul>
+		<li><b>category</b></li>
+		<li class="category"><p>type</p></li>
+			<li>スクウェア</li>
+			<li>ホックス</li>
+			<li>ボストン</li>
+			<li>セオミート</li>
+			<li>その他</li>
+		<li class="category"><p>sex</p></li>
+			<li>Man</li>
+			<li>Leadies</li>
+			<li>Kids</li>
+		<li class="category"><p>color</p></li>
+			<li>Black</li>
+			<li>Red</li>
+			<li>Blue</li>
+
+		</ul>
+		</div>
+
+		<!-- 商品詳細画面 -->
+		<div id="item_list">
+			<ul>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		    	      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>「http://placehold.it/[SIZE]/[BGCOLOR]/[TEXTCOLOR]&text=[DUMMYTEXT]」というようなURLで、任意のダミー画像を生成してくれてとっても便利。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		    	      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>このダミー画像の場合は「http://placehold.it/200x180/20b2aa/ffffff&text=image」という具合。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		  </ul>
+	  	</div>
   	</div>
 
   	</div>
