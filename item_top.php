@@ -64,19 +64,19 @@
 		<ul>
 		<li><b>category</b></li>
 		<li class="category"><p>type</p></li>
-			<li>スクウェア</li>
-			<li>ホックス</li>
-			<li>ボストン</li>
-			<li>セオミート</li>
-			<li>その他</li>
+			<li><a href="">スクウェア</a></li>
+			<li><a href="">ホックス</a></li>
+			<li><a href="">ボストン</a></li>
+			<li><a href="">セオミート</a></li>
+			<li><a href="">その他</a></li>
 		<li class="category"><p>sex</p></li>
-			<li>Man</li>
-			<li>Leadies</li>
-			<li>Kids</li>
+			<li><a>Man</a></li>
+			<li><a>Leadies</a></li>
+			<li><a>Kids</a></li>
 		<li class="category"><p>color</p></li>
-			<li>Black</li>
-			<li>Red</li>
-			<li>Blue</li>
+			<li><a>Black</a></li>
+			<li><a>Red</a></li>
+			<li><a>Blue</a></li>
 
 		</ul>
 		</div>
@@ -108,10 +108,35 @@
 		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
 		      </dl>
 		    </li>
-		  </ul>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		    <li class="type1">
+		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
+		      <dl>
+		        <dt>Placehold.it</dt>
+		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
+		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
+		      </dl>
+		    </li>
+		    </ul>
 	  	</div>
-  	</div>
 
+  	</div>
+	<div class="footer">copyright</div>
   	</div>
 
 
