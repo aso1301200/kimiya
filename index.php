@@ -51,12 +51,24 @@
 				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
 
 				<div id="header-login-form">
-					<form method="post" action="login.php">
-						ログイン
-						ID:<input type="text" value="" name="id" id="form-id">
-						パスワード:<input type="password" value="" name="password" id="form-password">
-						<input type="submit" value="ログイン">
-					</form>
+					<?php
+					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
+						//ログインしている場合の処理
+						print "ようこそ！".$_SESSION['name']."さん！";
+						print "<form method=\"post\" action=\"logout.php\">";
+						print "<input type=\"submit\" value=\"ログアウト\">";
+						print "</form>";
+
+					}else{
+						//ログインしてない場合の処理
+						print "<form method=\"post\" action=\"login.php\">";
+						print "ログイン";
+						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
+						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
+						print "<input type=\"submit\" value=\"ログイン\">";
+						print "</form>";
+					}
+					?>
 				</div>
 
 			</div><!-- #header-title-area -->
@@ -77,7 +89,7 @@
 
 
 					<div id="header-top-image">
-						ああああああああああああ<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
+						<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
 					</div>
 
 
