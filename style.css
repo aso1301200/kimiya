@@ -133,6 +133,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	display: none;
 }
 
+/* FOOTR----------------------------------------------------*/
+.footer{
+	height: 20px;
+	background-color: #58ACFA;
+}
+
 /* admin ----------------------------------------------------*/
 
 #admin{
@@ -219,17 +225,48 @@ img.img_goods{
 	clear: both;
 }
 
-<<<<<<< HEAD
-/*item_top--------------------------------------------------------------*/
+/* item_top ----------------------------------------------------*/
 .contents_item{
-	height: 600px;
+	height: 1000px;
 	background-color: #FAFAFA;
 	padding: 10px;
 }
 
-#item_list{
+#item_center{
+	margin: 0px auto;
 	width: 80%;
-	margin: auto;
+	overflow: hidden;
+}
+
+/*----カテゴリ検索欄----*/
+#item_category{
+	width: 360px;
+	float: left;
+	margin-right: 10px;
+}
+#item_category ul li{
+	height: 35px;
+}
+
+#item_category li  a{
+	color: black;
+	text-decoration: none;
+}
+
+#item_category li a:hover {
+	background: -webkit-gradient(linear, left top, right bottom, from(#58ACFA), to(#FAFAFA));
+}
+
+.category p{
+	border-left: 3px solid #58ACFA;
+	background: -webkit-gradient(linear, left top, right bottom, from(#58ACFA), to(#FAFAFA));
+}
+
+
+/*----商品の画像表示設定----*/
+#item_list{
+	width: 874px;
+	float: right;
 }
 
 #item_list ul {
@@ -252,7 +289,7 @@ img.img_goods{
   display: inline-block;
   position: relative;
   overflow: hidden;
-  margin: 0 7px;
+  margin: 7px 7px;
   letter-spacing: 0;
 }
 
