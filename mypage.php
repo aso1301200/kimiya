@@ -1,8 +1,19 @@
+<!--
+ファイル名:mypage.php
+作成日:2015/06/26
+作成者:吉川
+概要:会員情報ページ
+-->
 <!DOCTYPE html>
 <html lang=''>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
+
+<!-- sessionの開始(全てのページに入力してください) -->
+<?php
+	session_start();
+?>
 
 <!-- タグ関係（MenuMaker） 2015/06/07 -->
 <meta charset='utf-8'>
@@ -13,18 +24,30 @@
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="script.js"></script>
 <!-- ここまで、タグ関係 -->
-<title>きみ屋</title>
+<?php
+	print "<title>".$_SESSION['name']."さんの会員ページ</title>";
+?>
 
 </head>
 <body>
 
-<!-- sessionの開始(全てのページに入力してください) -->
-<?php
-	session_start();
-?>
 
 <!-- データベース準備 -->
 <?php
+//▼SQL文のエスケープ処理
+	function quote_smart($parameter)
+	{
+		// 数値以外をクオートする
+		if (!is_numeric($parameter)) {
+			$value = mysql_real_escape_string($parameter);
+		}else{
+			$value = (string)$parameter;
+		}
+		return $value;
+	}
+	//▲SQL文のエスケープ処理
+
+	//▼会員のIDから会員情報を取得するために接続
 	$url = "localhost";
 	$user = "root";
 	$pass = "root";
@@ -39,11 +62,14 @@
 	// クエリを送信する
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
-	//詳細、画像などを含めた商品情報のすべて
-	$result = mysql_query("SELECT g.goods_number,g.goods_name,p.photo_name FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
-	//結果セットの行数を取得する
-	$rows = mysql_num_rows($result);
+	// SELECT文(会員)
+	$sql = "SELECT * from user u,sex s where u.user_id = '".quote_smart($_SESSION['id'])."' AND u.sex_code = s.sex_code";
+
+	// SELECT文実行、配列に格納
+	$result = mysql_query($sql, $link);
+	$rows = mysql_fetch_assoc($result);
+
 ?>
 <!-- ここまでデータベース -->
 <div id="page">
@@ -65,7 +91,7 @@
 						<input type="submit" id="searchsubmit" value="検索">
 					</div>					</form>
 
-					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
+					<!-- ▼ログインのフォーム、及び顧客のページへのリンク▼ -->
 								<div id="header-login-form">
 					<br clear="all" />
 					<?php
@@ -73,21 +99,13 @@
 						//ログインしている場合の処理
 						print "<form method=\"post\" action=\"logout.php\">";
 						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php\">マイページへ</a>";
+						print "<a href=\"マイページへ\">マイページへ</a>";
 						print "<input type=\"submit\" value=\"ログアウト\">";
 						print "</form>";
 
-					}else{
-						//ログインしてない場合の処理
-						print "<form method=\"post\" action=\"login.php\">";
-						print "ログイン";
-						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
-						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
-						print "<input type=\"submit\" value=\"ログイン\">";
-						print "</form>";
 					}
 					?>
-					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
+					<!-- ▲ここまでがログインに関するフォームです▲ -->
 				</div>
 
 			</div><!-- #header-widget-area -->
@@ -119,35 +137,22 @@
 		</div>
 	</p>
 
-	<!-- 商品一覧部分 -->
-	<p>
-			<table border="1" class="goods-table">
-				<?php
-					for ($count = 0;$count < 8;$count++){
-						if($count < $rows){
-							//SELECT文から1行取得し配列"$array"に代入
-							$array = mysql_fetch_array($result,MYSQL_BOTH);
-							if($count == 0 || $count == 4){
-								print "<tr>";
-							}
-							printf( "<td><a href=\"%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_number"],$array["photo_name"],$array["goods_name"]);
-							if($count == 3 || $count == 7){
-								print "</tr>";
-							}
-						}else{
-							break;
-						}
-					}
-
-					//結果保持用メモリを開放する
-					mysql_free_result($result);
-
-					// MySQLへの接続を閉じる
-					mysql_close($link) or die("MySQL切断に失敗しました。");
-
-				?>
-			</table>
-	</p>
+	<!-- 会員情報、履歴、更新、退会 -->
+	<div id="show_mypage_username"><?php print $rows['name'];?>さんの会員情報です。</div>
+	<table class="table_mypage_userinfo">
+		<tr><td>ID</td><td><?php print $rows['user_id'];?></td><tr>
+		<tr><td>氏名</td><td><?php print $rows['name'];?></td><tr>
+		<tr><td>フリガナ</td><td><?php print $rows['kana'];?></td><tr>
+		<tr><td>郵便番号</td><td><?php print $rows['address_number'];?></td><tr>
+		<tr><td>住所</td><td><?php print $rows['address'];?></td><tr>
+		<tr><td>電話番号</td><td><?php print $rows['phone_number'];?></td><tr>
+		<tr><td>Eメールアドレス</td><td><?php print $rows['email'];?></td><tr>
+		<tr><td>性別</td><td><?php print $rows['sex_name'];?></td><tr>
+		<tr><td>生年月日</td><td><?php print substr($rows['birthday'], 0, 4);?>年<?php print substr($rows['birthday'], 5, 2);?>月<?php print substr($rows['birthday'], 8, 2);?>日</td><tr>
+		<tr><td>職業</td><td><?php print $rows['job'];?></td><tr>
+		<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt;</td><tr>
+		<tr><td>現在のポイント</td><td><?php print $rows['point'];?></td><tr>
+	</table>
 </div>
 </body>
 </html>

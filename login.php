@@ -99,6 +99,8 @@
 		//dataの格納内容で会員と管理者を判別する
 		$_SESSION['data'] = "user";
 
+		databaseReset($result,$link);
+
 		//前のページにリダイレクトする
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: ".$_SERVER['HTTP_REFERER']);
@@ -122,6 +124,8 @@
 		//dataの格納内容で会員と管理者を判別する
 		$_SESSION['data'] = "manager";
 
+		databaseReset($result,$link);
+
 		//前のページにリダイレクトする
 		header("HTTP/1.1 301 Moved Permanently");
 		header("Location: admin_top.php");
@@ -131,5 +135,16 @@
 		print "ID及びパスワードが異なります<br />";
 		print "下記のリンクより前の画面にお戻りください<br />";
 		print "<a href=\"".$_SERVER['HTTP_REFERER']."\">前の画面に戻る</a>";
+
+		databaseReset($result,$link);
+	}
+
+	//データベース解放用の変数
+	function databaseReset($result,$link) {
+		//結果保持用メモリを開放する
+		mysql_free_result($result);
+
+		// MySQLへの接続を閉じる
+		mysql_close($link) or die("MySQL切断に失敗しました。");
 	}
 ?>
