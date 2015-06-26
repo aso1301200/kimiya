@@ -17,6 +17,12 @@
 
 </head>
 <body>
+
+<!-- sessionの開始(全てのページに入力してください) -->
+<?php
+	session_start();
+?>
+
 <!-- データベース準備 -->
 <?php
 	$url = "localhost";
@@ -50,12 +56,23 @@
 
 				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
 
-				<div id="header-login-form">
+			</div><!-- #header-title-area -->
+
+			<div id="header-widget-area">
+				<form role="search" method="get" id="searchform" class="searchform" action="*******">
+					<div>
+						<input type="text" value="" name="s" id="s">
+						<input type="submit" id="searchsubmit" value="検索">
+					</div>					</form>
+
+					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
+								<div id="header-login-form">
+					<br clear="all" />
 					<?php
 					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
 						//ログインしている場合の処理
-						print "ようこそ！".$_SESSION['name']."さん！";
 						print "<form method=\"post\" action=\"logout.php\">";
+						print "ようこそ！".$_SESSION['name']."さん！";
 						print "<input type=\"submit\" value=\"ログアウト\">";
 						print "</form>";
 
@@ -69,27 +86,14 @@
 						print "</form>";
 					}
 					?>
+					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
 				</div>
-
-			</div><!-- #header-title-area -->
-
-			<div id="header-widget-area">
-
-<!-- 検索フォームの位置替えのためコメントアウト
-				<form role="search" method="get" id="searchform" class="searchform" action="*******">
-					<div>
-						<input type="text" value="" name="s" id="s">
-						<input type="submit" id="searchsubmit" value="検索">
-					</div>
-				</form>
-
--->
 
 			</div><!-- #header-widget-area -->
 
 
 					<div id="header-top-image">
-						<img src="images/test_images/test_top.png" style="width:100%;height:100%;"><!-- トップの上部のおしゃれな絵 -->
+						<!-- <img src="images/test_images/test_top.png" style="width:100%;height:100%;">トップの上部のおしゃれな絵-->
 					</div>
 
 

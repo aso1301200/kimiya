@@ -100,13 +100,13 @@
 		$_SESSION['data'] = "user";
 
 		//前のページにリダイレクトする
-		//header("HTTP/1.1 301 Moved Permanently");
-		//header("Location: ".$_SERVER['HTTP_REFERER']);
-		//exit();
+		header("HTTP/1.1 301 Moved Permanently");
+		header("Location: ".$_SERVER['HTTP_REFERER']);
+		exit();
 
-		print "会員としてログインしました<br />";
-		print "ID:".$_SESSION['id']." 名前:".$_SESSION['name'];
-		print "<a href=\"".$_SERVER['HTTP_REFERER']."\">前の画面に戻る</a>";
+// 		print "ログインしました<br />";
+// 		print "ID:".$_SESSION['id']." 名前:".$_SESSION['name'];
+// 		print "<a href=\"".$_SERVER['HTTP_REFERER']."\">前の画面に戻る</a>";
 
 	}else if($data === "manager"){
 		// 取得した管理者情報を配列として格納
@@ -123,13 +123,9 @@
 		$_SESSION['data'] = "manager";
 
 		//前のページにリダイレクトする
-		//header("HTTP/1.1 301 Moved Permanently");
-		//header("Location: ".$_SERVER['HTTP_REFERER']);
-		//exit();
-
-		print "管理者としてログインしました<br />";
-		print "ID:".$_SESSION['id']." 名前:".$_SESSION['name'];
-		print "<a href=\"".$_SERVER['HTTP_REFERER']."\">前の画面に戻る</a>";
+		header("HTTP/1.1 301 Moved Permanently");
+		header("Location: admin_top.php");
+		exit();
 
 	}else{
 		print "ID及びパスワードが異なります<br />";
