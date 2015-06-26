@@ -146,7 +146,7 @@
 			</div>
 		</div>
 
-		<div class="contents">
+		<div id="contents_admin">
 			<div><h2>商品更新</h2></div>
 			<div class="post">
 
@@ -227,7 +227,7 @@
 			</div>
 		</div>
 
-		<div class="contents">
+		<div id="contents_admin">
 			<div><h2>商品削除</h2></div>
 			<div class="post">
 					<img src="images/sample_logo_01.png" alt=""  id="admin_image"/>

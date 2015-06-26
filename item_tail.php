@@ -81,60 +81,54 @@
 		</ul>
 		</div>
 
-		<!-- 商品画面 -->
-		<div id="item_list">
-			<ul>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		    	      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>「http://placehold.it/[SIZE]/[BGCOLOR]/[TEXTCOLOR]&text=[DUMMYTEXT]」というようなURLで、任意のダミー画像を生成してくれてとっても便利。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		    	      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>このダミー画像の場合は「http://placehold.it/200x180/20b2aa/ffffff&text=image」という具合。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    <li class="type1">
-		      <img src="images/test_images/test_grassB_front.png" id="item_top_image">
-		      <dl>
-		        <dt>Placehold.it</dt>
-		        <dd>この画像は「Placehold.it」で生成されるダミー画像を使用しています。</dd>
-		        <dd><a href="http://www.placehold.it/" target="_blank">Placehold.it</a></dd>
-		      </dl>
-		    </li>
-		    </ul>
-	  	</div>
+		<!-- 商品詳細画面 -->
+		<div id="item_tail">
+		<div id="wrapper">
+		  <input type="radio" name="slideshow" id="switch1" checked>
+		  <input type="radio" name="slideshow" id="switch2">
+		  <input type="radio" name="slideshow" id="switch3">
+		  <input type="radio" name="slideshow" id="switch4">
+			  <div id="slideshow">
+			    <div class="slideContents">
+			      <section id="slide1">
+			        <img src="images/test_images/test_grassB_front.png">
+			      </section>
+			      <section id="slide2">
+			        <img src="images/test_images/test_grassB_front.png">
+			      </section>
+			      <section id="slide3">
+			        <img src="images/test_images/test_grassB_front.png">
+			      </section>
+			      <section id="slide4">
+			        <img src="images/test_images/test_grassB_front.png">
+			      </section>
 
+			    </div>
+			    <p class="arrow prev">
+			      <i class="ico"></i>
+			      <label for="switch1"></label>
+			      <label for="switch2"></label>
+			      <label for="switch3"></label>
+			      <label for="switch4"></label>
+			    </p>
+			    <p class="arrow next">
+			      <i class="ico"></i>
+			      <label for="switch1"></label>
+			      <label for="switch2"></label>
+			      <label for="switch3"></label>
+			      <label for="switch4"></label>
+			    </p>
+			  </div>
+		</div>
+		<div id="item_info">
+			<div id="item_name">
+			<font size="6">SQLから取得した商品名</font>
+			<div ></div>
+			</div>
+			<div id="item_explanation">
+			</div>
+		</div>
+		</div>
 
   	</div>
 	<div class="footer">copyright</div>
