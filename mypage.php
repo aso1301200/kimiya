@@ -25,7 +25,13 @@
 <script src="script.js"></script>
 <!-- ここまで、タグ関係 -->
 <?php
-	print "<title>".$_SESSION['name']."さんの会員ページ</title>";
+	if(!empty($_SESSION['id'])){
+		//ログイン中の場合は会員の名前をtitleに含める
+		print "<title>".$_SESSION['name']."さんの会員ページ</title>";
+	}else{
+		//ログインしていない場合のtitle
+		print "<title>会員ページ</title>";
+	}
 ?>
 
 </head>
@@ -47,28 +53,31 @@
 	}
 	//▲SQL文のエスケープ処理
 
-	//▼会員のIDから会員情報を取得するために接続
-	$url = "localhost";
-	$user = "root";
-	$pass = "root";
-	$db = "kimiya";
+	//データベースへの接続はログイン中のみに行う
+	if(!empty($_SESSION['id'])){
+		//▼会員のIDから会員情報を取得するために接続
+		$url = "localhost";
+		$user = "root";
+		$pass = "root";
+		$db = "kimiya";
 
-	// MySQLへ接続する
-	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
+		// MySQLへ接続する
+		$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
 
-	// データベースを選択する
-	$sdb = mysql_select_db($db,$link) or die("データベースの選択に失敗しました。");
+		// データベースを選択する
+		$sdb = mysql_select_db($db,$link) or die("データベースの選択に失敗しました。");
 
-	// クエリを送信する
-	//文字化け対策
-	mysql_query("SET NAMES 'utf8'");
+		// クエリを送信する
+		//文字化け対策
+		mysql_query("SET NAMES 'utf8'");
 
-	// SELECT文(会員)
-	$sql = "SELECT * from user u,sex s where u.user_id = '".quote_smart($_SESSION['id'])."' AND u.sex_code = s.sex_code";
+		// SELECT文(会員)
+		$sql = "SELECT * from user u,sex s where u.user_id = '".quote_smart($_SESSION['id'])."' AND u.sex_code = s.sex_code";
 
-	// SELECT文実行、配列に格納
-	$result = mysql_query($sql, $link);
-	$rows = mysql_fetch_assoc($result);
+		// SELECT文実行、配列に格納
+		$result = mysql_query($sql, $link);
+		$rows = mysql_fetch_assoc($result);
+	}
 
 ?>
 <!-- ここまでデータベース -->
@@ -138,21 +147,31 @@
 	</p>
 
 	<!-- 会員情報、履歴、更新、退会 -->
-	<div id="show_mypage_username"><?php print $rows['name'];?>さんの会員情報です。</div>
-	<table class="table_mypage_userinfo">
-		<tr><td>ID</td><td><?php print $rows['user_id'];?></td><tr>
-		<tr><td>氏名</td><td><?php print $rows['name'];?></td><tr>
-		<tr><td>フリガナ</td><td><?php print $rows['kana'];?></td><tr>
-		<tr><td>郵便番号</td><td><?php print $rows['address_number'];?></td><tr>
-		<tr><td>住所</td><td><?php print $rows['address'];?></td><tr>
-		<tr><td>電話番号</td><td><?php print $rows['phone_number'];?></td><tr>
-		<tr><td>Eメールアドレス</td><td><?php print $rows['email'];?></td><tr>
-		<tr><td>性別</td><td><?php print $rows['sex_name'];?></td><tr>
-		<tr><td>生年月日</td><td><?php print substr($rows['birthday'], 0, 4);?>年<?php print substr($rows['birthday'], 5, 2);?>月<?php print substr($rows['birthday'], 8, 2);?>日</td><tr>
-		<tr><td>職業</td><td><?php print $rows['job'];?></td><tr>
-		<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt;</td><tr>
-		<tr><td>現在のポイント</td><td><?php print $rows['point'];?></td><tr>
-	</table>
+	<?php
+	if (!empty($_SESSION['id'])){
+		//ログイン中の処理
+		print "<div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div>";
+			print "<table class=\"table_mypage_userinfo\">";
+				print "<tr><td>ID</td><td>".$rows['user_id']."</td><tr>";
+				print "<tr><td>氏名</td><td>".$rows['name']."</td><tr>";
+				print "<tr><td>フリガナ</td><td>".$rows['kana']."</td><tr>";
+				print "<tr><td>郵便番号</td><td>".$rows['address_number']."</td><tr>";
+				print "<tr><td>住所</td><td>".$rows['address']."</td><tr>";
+				print "<tr><td>電話番号</td><td>".$rows['phone_number']."</td><tr>";
+				print "<tr><td>Eメールアドレス</td><td>".$rows['email']."</td><tr>";
+				print "<tr><td>性別</td><td>".$rows['sex_name']."</td><tr>";
+				print "<tr><td>生年月日</td><td>".substr($rows['birthday'], 0, 4)."年".substr($rows['birthday'], 5, 2)."月".substr($rows['birthday'], 8, 2)."日</td><tr>";
+				print "<tr><td>職業</td><td>".$rows['job']."</td><tr>";
+				print "<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt</td><tr>";
+				print "<tr><td>現在のポイント</td><td>".$rows['point']."</td><tr>";
+			print "</table>";
+	}else{
+		//ログインしていない時にアクセスした場合に表示する内容
+		print "ログインしている状態でなければこのページはご利用になれません。<br />";
+		print "<a href=\"index.php\">トップページに戻る</a>";
+	}
+	?>
+
 </div>
 </body>
 </html>
