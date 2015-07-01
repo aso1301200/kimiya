@@ -73,7 +73,7 @@
 						//ログインしている場合の処理
 						print "<form method=\"post\" action=\"logout.php\">";
 						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php\">マイページへ</a>";
+						print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
 						print "<input type=\"submit\" value=\"ログアウト\">";
 						print "</form>";
 
@@ -84,6 +84,7 @@
 						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
 						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
 						print "<input type=\"submit\" value=\"ログイン\">";
+						print "<a href=\"\">新規会員登録はこちらから</a>";
 						print "</form>";
 					}
 					?>

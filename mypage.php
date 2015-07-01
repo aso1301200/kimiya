@@ -108,7 +108,7 @@
 						//ログインしている場合の処理
 						print "<form method=\"post\" action=\"logout.php\">";
 						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"マイページへ\">マイページへ</a>";
+						print "<a href=\"mypage.php\">マイページへ</a>";
 						print "<input type=\"submit\" value=\"ログアウト\">";
 						print "</form>";
 
@@ -147,30 +147,72 @@
 	</p>
 
 	<!-- 会員情報、履歴、更新、退会 -->
-	<?php
-	if (!empty($_SESSION['id'])){
-		//ログイン中の処理
-		print "<div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div>";
-			print "<table class=\"table_mypage_userinfo\">";
-				print "<tr><td>ID</td><td>".$rows['user_id']."</td><tr>";
-				print "<tr><td>氏名</td><td>".$rows['name']."</td><tr>";
-				print "<tr><td>フリガナ</td><td>".$rows['kana']."</td><tr>";
-				print "<tr><td>郵便番号</td><td>".$rows['address_number']."</td><tr>";
-				print "<tr><td>住所</td><td>".$rows['address']."</td><tr>";
-				print "<tr><td>電話番号</td><td>".$rows['phone_number']."</td><tr>";
-				print "<tr><td>Eメールアドレス</td><td>".$rows['email']."</td><tr>";
-				print "<tr><td>性別</td><td>".$rows['sex_name']."</td><tr>";
-				print "<tr><td>生年月日</td><td>".substr($rows['birthday'], 0, 4)."年".substr($rows['birthday'], 5, 2)."月".substr($rows['birthday'], 8, 2)."日</td><tr>";
-				print "<tr><td>職業</td><td>".$rows['job']."</td><tr>";
-				print "<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt</td><tr>";
-				print "<tr><td>現在のポイント</td><td>".$rows['point']."</td><tr>";
-			print "</table>";
-	}else{
-		//ログインしていない時にアクセスした場合に表示する内容
-		print "ログインしている状態でなければこのページはご利用になれません。<br />";
-		print "<a href=\"index.php\">トップページに戻る</a>";
-	}
-	?>
+	<br clear="all">
+	<div id='mypage-body'>
+		<div id="cssmenu">
+		<ul>
+				<li><a href='?tag=home'><span>会員情報閲覧</span></a></li>
+				<li><a href='?tag=history'><span>購入履歴</span></a></li>
+				<li><a href='?tag=alter'><span>会員情報更新</span></a></li>
+				<li><a href='?tag=delete'><span>退会</span></a></li>
+		</ul>
+		</div>
+		<?php
+		if (!empty($_SESSION['id'])){
+			//ログイン中の処理
+			if($_GET['tag'] === "home" || empty($_GET['tag'])){
+				//会員情報閲覧
+					print "<table class=\"table_mypage_userinfo\">";
+						print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div></td></tr>";
+						print "<tr><td>ID</td><td>".$rows['user_id']."</td><tr>";
+						print "<tr><td>氏名</td><td>".$rows['name']."</td><tr>";
+						print "<tr><td>フリガナ</td><td>".$rows['kana']."</td><tr>";
+						print "<tr><td>郵便番号</td><td>".$rows['address_number']."</td><tr>";
+						print "<tr><td>住所</td><td>".$rows['address']."</td><tr>";
+						print "<tr><td>電話番号</td><td>".$rows['phone_number']."</td><tr>";
+						print "<tr><td>Eメールアドレス</td><td>".$rows['email']."</td><tr>";
+						print "<tr><td>性別</td><td>".$rows['sex_name']."</td><tr>";
+						print "<tr><td>生年月日</td><td>".substr($rows['birthday'], 0, 4)."年".substr($rows['birthday'], 5, 2)."月".substr($rows['birthday'], 8, 2)."日</td><tr>";
+						print "<tr><td>職業</td><td>".$rows['job']."</td><tr>";
+						print "<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt</td><tr>";
+						print "<tr><td>現在のポイント</td><td>".$rows['point']."</td><tr>";
+					print "</table>";
+			}else if($_GET['tag'] === "history"){
+				//購入履歴
+				print "購入履歴";
+
+			}else if($_GET['tag'] === "alter"){
+				//会員情報更新(3列目に入力フォーム)
+				print "<div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div>";
+					print "<table class=\"table_mypage_userinfo\">";
+						print "<form method=\"POST\" action=\"更新ページのURL\">";
+							print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">".$rows['name']."さんの更新する情報を入力してください。</div></td></tr>";
+							print "<tr><td></td><td>更新前情報</td><td>更新後情報</td>";
+							print "<tr><td>ID</td><td>".$rows['user_id']."</td><td>IDは更新できません</td><tr>";
+							print "<tr><td>氏名</td><td>".$rows['name']."</td><td><input type=\"text\" name=\"name\"></td><tr>";
+							print "<tr><td>フリガナ</td><td>".$rows['kana']."</td><td><input type=\"text\" name=\"kana\"></td><tr>";
+							print "<tr><td>郵便番号</td><td>".$rows['address_number']."</td><td><input type=\"text\" name=\"address_number\"></td><tr>";
+							print "<tr><td>住所</td><td>".$rows['address']."</td><td><input type=\"text\" name=\"address\"></td><tr>";
+							print "<tr><td>電話番号</td><td>".$rows['phone_number']."</td><td><input type=\"text\" name=\"phone_number\"></td><tr>";
+							print "<tr><td>Eメールアドレス</td><td>".$rows['email']."</td><td><input type=\"text\" name=\"email\"></td><tr>";
+							print "<tr><td>性別</td><td>".$rows['sex_name']."</td><td><input type=\"text\" name=\"sex_name\"></td><tr>";
+							print "<tr><td>生年月日(西暦)</td><td>".substr($rows['birthday'], 0, 4)."年".substr($rows['birthday'], 5, 2)."月".substr($rows['birthday'], 8, 2)."日</td><td><input type=\"text\" name=\"year\" size=\"4\">年<input type=\"text\" name=\"month\" size=\"2\">月<input type=\"text\" name=\"date\" size=\"2\">日</td><tr>";
+							print "<tr><td>職業</td><td>".$rows['job']."</td><td><input type=\"text\" name=\"job\"></td><tr>";
+							print "<tr><td>パスワード</td><td>&lt;この項目は表示されません&gt</td><td><input type=\"password\" name=\"password\"></td><tr>";
+							print "<tr><td>現在のポイント</td><td>".$rows['point']."</td><td><input type=\"text\" name=\"point\"></td><tr>";
+						print "</form>";
+					print "</table>";
+			}else if($_GET['tag'] === "delete"){
+				//退会
+				print "退会";
+			}
+		}else{
+			//ログインしていない時にアクセスした場合に表示する内容
+			print "ログインしている状態でなければこのページはご利用になれません。<br />";
+			print "<a href=\"index.php\">トップページに戻る</a>";
+		}
+		?>
+	</div>
 
 </div>
 </body>
