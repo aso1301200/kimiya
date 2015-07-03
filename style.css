@@ -644,3 +644,10 @@ table.goods-table {
 	outline-width: 5px;
 	border-color: #22afcd;
 }
+
+/*----会員ページのBODY部分----*/
+#mypage-body {
+	margin : 30px;
+	padding : 20px;
+	border : 5px;
+}
