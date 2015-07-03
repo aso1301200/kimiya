@@ -120,23 +120,63 @@
 			    </p>
 			  </div>
 		</div>
-		<div id="item_info">
+		<!-- 商品情報説明欄 -->
+		<div id="item">
+		  <div id="item_info">
 			<div id="item_name">
-			<font size="6">SQLから取得した商品名</font>
-			<div ></div>
+				<font size="6">SQLから取得した商品名</font>
 			</div>
 			<div id="item_explanation">
+			  <!-- 価格 -->
+			  <p style="border-bottom: dotted 1px #000;">
+			  <font size="8" color="red">Prise</font></p><br><br>
+			  <!-- サイズ -->
+			  <div style="border-bottom: dotted 1px #000; padding-bottom: 1px;">
+			  <div style="text-align: left; float: left;"><font size="4">Size</font></div>
+			  <div style="text-align: right;">価格</div>
+			  </div><br>
+			  <!-- タイプ -->
+			  <div style="border-bottom: dotted 1px #000; padding-bottom: 1px;">
+			  <div style="text-align: left; float: left;"><font size="4">Type</font></div>
+			  <div style="text-align: right;">タイプ</div>
+			  </div><br>
+			  <!-- カラー -->
+			  <div style="border-bottom: dotted 1px #000; padding-bottom: 1px;">
+			  <div style="text-align: left; float: left;"><font size="4">Color</font></div>
+			  <div style="text-align: right;">カラー</div>
+			  </div><br>
+			  <!-- 性別 -->
+			  <div style="border-bottom: dotted 1px #000; padding-bottom: 1px;">
+			  <div style="text-align: left; float: left;"><font size="4">Sex</font></div>
+			  <div style="text-align: right;">性別</div>
+			  </div><br>
+			  <!-- 商品説明文 -->
+			  <p id="explanation_tail">ここに商品説明文が入る</p>
 			</div>
+		  </div>
+		 <!-- カート欄 -->
+		  <div id="item_cart">
+			<div id="cart_info">
+			<!--番号 -->
+			  <p>番号：</p><p></p><br>
+			<!-- サイズ -->
+			  <p>サイズ：</p><p></p><br>
+			<!-- 個数 -->
+			  <p>個数：</p><p></p><br>
+			<!-- 価格 -->
+			  <p>価格：</p><p></p>
+			</div>
+			<!-- カートボタン -->
+			  <div id="cart_botton">
+			  <p class="btn"><a>カートに入れる</a></p>
+			</div>
+		  </div>
 		</div>
 		</div>
-
   	</div>
-	<div class="footer">copyright</div>
   	</div>
 
-
-
-
+<div class="footer">copyright</div>
 </div>
 </body>
 </html>
