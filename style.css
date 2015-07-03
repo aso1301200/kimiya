@@ -126,7 +126,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 /* FOOTR----------------------------------------------------*/
 .footer {
+	width: 100%;
 	height: 20px;
+	margin-top: 10px;
 	background-color: #58ACFA;
 }
 
@@ -518,11 +520,17 @@ input[type="radio"] {
 }
 
 /*----商品情報に関する設定----*/
-#item_info{
-	width: 635px;
+#item{
+	width: 855px;
 	height: 500px;
 	margin: 10px;
 }
+
+#item_info{
+	float: left;
+	overflow: hidden;
+}
+
 #item_name{
 	width: 635px;
 	height: 40px;
@@ -531,15 +539,75 @@ input[type="radio"] {
 	border-radius: 8px 8px 0px 0px;
 	margin-bottom: 6px;
 	padding: 3px;
+	position: relative;
 }
 
 #item_explanation{
-	width: 635px;
+	width: 601px;
 	height: 400px;
 	background-color: #ffffff;
 	border: 1px solid #c0c0c0;
 	border-radius: 0px 0px 8px 8px;
+	padding: 20px;
 }
+
+#explanation_tail{
+	width: 559px;
+	height: 100px;
+	margin-top: 5px;
+	padding: 20px;
+	border: 1px solid #c0c0c0;
+	border-radius: 8px 8px 8px 8px;
+}
+
+#item_cart{
+	width: 200px;
+	height: 220px;
+	float: right;
+	margin-left: 10px;
+	background-color: #ffffff;
+	border: 1px solid #c0c0c0;
+	border-radius: 8px 8px 8px 8px;
+}
+
+#cart_info{
+	width: 130px;
+	height: 120px;
+	margin: 10px;
+}
+
+.btn a {
+  display: block;
+  cursor: pointer;
+  width: 150px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #20b2aa;
+  border-radius: 5px;
+  box-shadow: 0 6px 0 #047c71, 0 12px 0 rgba(0,0,0,0.2);
+  -webkit-transition: color 0.3s, background-color 0.3s, box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.btn a:hover {
+  background-color: #3cc4bd;
+  box-shadow: 0 3px 0 #12978d, 0 6px 0px rgba(0,0,0,0.2);
+  -webkit-transform: translateY(3px);
+  transform: translateY(3px);
+}
+
+.btn a:active {
+  color: #ddd;
+  background-color: #12978d;
+  box-shadow: 0 0 0 #047c71, 0 0 0px rgba(0,0,0,0.2);
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  transition-duration: 0.1s;
+}
+
 /*----トップの画像に関する設定----*/
 #header-top-image {
 	/*border: 1px solid #000000;*/
@@ -585,4 +653,6 @@ table.goods-table {
 
 #mypage-body-inner {
 	border : solid;
+	border : 5px;
 }
+

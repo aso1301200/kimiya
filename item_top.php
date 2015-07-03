@@ -137,12 +137,9 @@
 
 
   	</div>
-	<div class="footer">copyright</div>
   	</div>
 
-
-
-
+<div class="footer">copyright</div>
 </div>
 </body>
 </html>
