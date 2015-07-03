@@ -147,7 +147,6 @@ if(!empty($_SESSION['id'])){
 						print "<form method=\"post\" action=\"logout.php\">";
 						print "ようこそ！".$_SESSION['name']."さん！";
 						print "<a href=\"mypage.php\">マイページへ</a>";
-						print "<input type=\"submit\" value=\"ログアウト\">";
 						print "</form>";
 
 					}
