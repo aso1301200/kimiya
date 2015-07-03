@@ -581,5 +581,8 @@ table.goods-table {
 #mypage-body {
 	margin : 30px;
 	padding : 20px;
-	border : 5px;
+}
+
+#mypage-body-inner {
+	border : solid;
 }
