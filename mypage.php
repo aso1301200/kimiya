@@ -209,7 +209,7 @@
 			}else if($_GET['tag'] === "delete"){
 				//退会
 					print "<table class=\"table_mypage_userinfo\">";
-						print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">退会ページです。<br />退会しますとアカウント情報の復帰はできません。<br />退会しますか？<br /><input type=\"button\" value=\"退会します\" onclick=\"location.href='退会用ＵＲＬ'\"></div></td></tr>";
+						print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">退会ページです。<br />退会しますとアカウント情報の復帰はできません。<br />退会しますか？<br /><form method=\"POST\" action=\"user_delete.php\"><input type=\"submit\" name=\"user_delete\" value=\"退会します\"></form></div></td></tr>";
 						print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div></td></tr>";
 						print "<tr><td>ID</td><td>".$rows['user_id']."</td><tr>";
 						print "<tr><td>氏名</td><td>".$rows['name']."</td><tr>";

@@ -54,7 +54,7 @@ if(!empty($_SESSION['id'])){
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
 
-	/*ここから更新作業(入力されたものを対象に更新)*/
+	/*▼ここから更新作業(入力されたものを対象に更新)*/
 	//氏名
 	if($_POST['name'] != ""){
 		update("name", $_POST['name'],$link);
@@ -104,7 +104,7 @@ if(!empty($_SESSION['id'])){
 	if($_POST['password'] != ""){
 		update("password", $_POST['password'],$link);
 	}
-	/*ここまで更新作業*/
+	/*▲ここまで更新作業*/
 
 	//ユーザー情報を表示用に取得
 	$sql = "SELECT * from user u,sex s where u.user_id = '".quote_smart($_SESSION['id'])."' and u.sex_code = s.sex_code";
