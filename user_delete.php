@@ -34,21 +34,6 @@
 						<input type="text" value="" name="s" id="s">
 						<input type="submit" id="searchsubmit" value="検索">
 					</div>					</form>
-
-					<!-- ▼ログインのフォーム、及び顧客のページへのリンク▼ -->
-								<div id="header-login-form">
-					<br clear="all" />
-					<?php
-					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
-						//ログインしている場合の処理
-						print "<form method=\"post\" action=\"logout.php\">";
-						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php\">マイページへ</a>";
-						print "</form>";
-
-					}
-					?>
-					<!-- ▲ここまでがログインに関するフォームです▲ -->
 				</div>
 
 			</div><!-- #header-widget-area -->
