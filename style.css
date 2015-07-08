@@ -651,3 +651,41 @@ table.goods-table {
 	padding : 20px;
 	border : 5px;
 }
+
+/*---- 新規登録画面 ----*/
+#register_title{
+	width: 854px;
+	height: 25px;
+	background-color: #ffffff;
+	padding: 10px;
+	margin-bottom: 20px;
+	float: right;
+	border: 1px solid #c0c0c0;
+}
+
+#content_input{
+	wight: 876px;
+	height: 800px;
+	padding: 10px;
+	background-color: #ffffff;
+	float: right;
+	border: 1px solid #c0c0c0;
+}
+
+#lead{
+	width: 856px;
+	height: 12px;
+	background-color: #ffffff;
+	margin-bottom: 12px;
+}
+
+#input_table{
+	wight: 856px;
+	height: 760px;
+
+}
+
+
+
+
+
