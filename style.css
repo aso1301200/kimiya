@@ -128,7 +128,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 .footer {
 	width: 100%;
 	height: 20px;
-	margin-top: 10px;
+	margin-top: 20px;
 	background-color: #58ACFA;
 }
 
@@ -649,6 +649,10 @@ table.goods-table {
 #mypage-body {
 	margin : 30px;
 	padding : 20px;
+}
+
+#mypage-body-inner {
+	border : solid;
 	border : 5px;
 }
 
@@ -664,28 +668,153 @@ table.goods-table {
 }
 
 #content_input{
-	wight: 876px;
-	height: 800px;
-	padding: 10px;
+	width: 794px;
+	height: 870px;
+	padding: 40px;
 	background-color: #ffffff;
 	float: right;
 	border: 1px solid #c0c0c0;
 }
 
 #lead{
-	width: 856px;
-	height: 12px;
+	width: 730px;
+	height: 30px;
 	background-color: #ffffff;
-	margin-bottom: 12px;
+	margin-bottom: 25px;
 }
 
 #input_table{
-	wight: 856px;
-	height: 760px;
+	width: 730px;
+	height: 810px;
+	overflow: hidden;
 
 }
 
+.must, .cont, .box120{
+	vertical-align: middle;
+}
+.name th, .gender th, .birth th, .zip th
+, .address th, .number th, .email th, .job th, .password th{
+	width: 200px;
+	height: 45px;
+	text-align: left;
+	vertical-align: middle;
+}
 
+.must{
+	width: 50px;
+	height: 45px;
+}
 
+.cont{
+	width: 480px;
+	height: 45px;
+}
 
+.address .cont{
+	width: 480px;
+	height: 160px;
+}
 
+.email .cont{
+	width: 480px;
+	height: 100px;
+}
+
+.password .cont{
+	width: 480px;
+	height: 140px;
+}
+
+.box120{
+	width:174px;
+	height: 28px;
+}
+
+.radio input{
+	display: none;
+}
+.radio label{
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	margin-left: 20px;
+	padding: 10px 20px;
+	border-radius: 2px;
+	color: #000000;
+	text-align: center;
+	line-height: 1;
+}
+
+.radio label:before{
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: -10px;
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+	background: #ffffff;
+	border-radius: 50%;
+	border: 1px solid #19283C;
+}
+.radio input[type="radio"]:checked + label:after {
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: -4px;
+	width: 8px;
+	height: 8px;
+	margin-top: -4px;
+	border-radius: 50%;
+	background: #0080ff;
+}
+
+.birth .select{
+	width: 100px;
+	heigth: 20px;
+	float: left;
+	overflow: hidden;
+}
+
+.job .select{
+	width: 200px;
+	height: 60px;
+}
+
+.tblareabtn{
+	float: right;
+	overflow: hidden;
+}
+
+.tblareabtn input {
+  display: block;
+  cursor: pointer;
+  width: 150px;
+  margin: 15px;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #20b2aa;
+  border-radius: 5px;
+  box-shadow: 0 6px 0 #047c71, 0 12px 0 rgba(0,0,0,0.2);
+  -webkit-transition: color 0.3s, background-color 0.3s, box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.tblareabtn input:hover {
+  background-color: #3cc4bd;
+  box-shadow: 0 3px 0 #12978d, 0 6px 0px rgba(0,0,0,0.2);
+  -webkit-transform: translateY(3px);
+  transform: translateY(3px);
+}
+
+.tblareabtn input:active {
+  color: #ddd;
+  background-color: #12978d;
+  box-shadow: 0 0 0 #047c71, 0 0 0px rgba(0,0,0,0.2);
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  transition-duration: 0.1s;
+}
