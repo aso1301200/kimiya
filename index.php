@@ -40,7 +40,7 @@
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
 	//詳細、画像などを含めた商品情報のすべて
-	$result = mysql_query("SELECT g.goods_number,g.goods_name,p.photo_name FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
+	$result = mysql_query("SELECT g.goods_number,g.goods_name,p.photo_name,color_code FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
 	//結果セットの行数を取得する
 	$rows = mysql_num_rows($result);
@@ -131,7 +131,7 @@
 							if($count == 0 || $count == 4){
 								print "<tr>";
 							}
-							printf( "<td><a href=\"%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_number"],$array["photo_name"],$array["goods_name"]);
+							printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
 							if($count == 3 || $count == 7){
 								print "</tr>";
 							}
