@@ -74,6 +74,8 @@
 
 	//結果セットを取得する
 	$assoc = mysql_fetch_assoc($result);
+	//mysql_fetch_assocで動いたポインタを元に戻す
+	mysql_data_seek($result, 0);
 ?>
 <!-- ここまでデータベース -->
 <div id="page">
@@ -276,7 +278,7 @@
 			</div>
 			<!-- カートボタン -->
 			  <div id="cart_botton">
-			  <p class="btn"><a>カートに入れる</a></p>
+			  <p class="btn"><a href="遷移先?item=<?php print $_GET['item']?>&id=<?php print $_GET['color']?>">カートに入れる</a></p>
 			</div>
 		  </div>
 		</div>
