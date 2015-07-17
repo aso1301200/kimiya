@@ -93,40 +93,42 @@
 					</div>					</form>
 
 					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
-								<div id="header-login-form">
-					<br clear="all" />
-					<?php
-					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
-						//ログインしている場合の処理
-						print "<form method=\"post\" action=\"logout.php\">";
-						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
-						print "<input type=\"submit\" value=\"ログアウト\">";
-						print "</form>";
+					<div id="header-login-form">
+						<br clear="all" />
+						<?php
+						if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
+							//ログインしている場合の処理
+							print "<form method=\"post\" action=\"logout.php\">";
+							print "ようこそ！".$_SESSION['name']."さん！";
+							print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
+							print "<input type=\"submit\" value=\"ログアウト\">";
+							print "</form>";
 
-					}else{
-						//ログインしてない場合の処理
-						print "<form method=\"post\" action=\"login.php\">";
-						print "ログイン";
-						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
-						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
-						print "<input type=\"submit\" value=\"ログイン\">";
-						print "<a href=\"\">新規会員登録はこちらから</a>";
-						print "</form>";
-					}
-					?>
+						}else{
+							//ログインしてない場合の処理
+							print "<form method=\"post\" action=\"login.php\">";
+							print "ログイン";
+							print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
+							print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
+							print "<input type=\"submit\" value=\"ログイン\">";
+							print "<a href=\"\">新規会員登録はこちらから</a>";
+							print "</form>";
+						}
+						?>
+					</div>
 					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
 
 			</div><!-- #header-widget-area -->
-			<div class="clear"></div>
+
+					<div id="header-top-image">
+						<!--  <img src="">		<!-- トップの上部のおしゃれな絵 -- -->
+					</div>
+
+
 		</div><!-- .header-inner -->
 	</div><!-- #masthead -->
 
-	<p>
-		<div id="header-top-image">
-			<img src="">トップ		<!-- トップの上部のおしゃれな絵 -->
-		</div>
-	</p>
+	<div class="clear"></div>
 
 	<!-- タグ部メニュー -->
 	<p>
@@ -170,6 +172,12 @@
 
 		<!-- 商品詳細画面 -->
 		<div id="item_tail">
+		<?php
+			//商品をカートに追加後テキストを表示
+			if(!empty($_GET['added']) && $_GET['added'] == true){
+				print "<div id=\"added\" style=\"background-color: #fff0f0; font-size: 20px; \"><font color=\"#ffa0a0\">カートに商品を追加しました</font></div>";
+			}
+		?>
 		<div id="wrapper">
 		  <input type="radio" name="slideshow" id="switch1" checked>
 		  <input type="radio" name="slideshow" id="switch2">
@@ -270,15 +278,22 @@
 			<!-- サイズ -->
 			  <p>サイズ：<?php print $assoc['size_name'];?></p><p></p><br>
 			<!-- 個数 -->
-			  <p>個数：</p><p></p><br>
+			  <p>個数：
+			  <?php
+			  	if(empty($_SESSION['cart_array'])){
+			  		print "0";
+			  	}else{
+			  		print $_SESSION['cart_count'];
+			  	}
+			  ?></p><p></p><br>
 			<!-- 価格 -->
-			  <p>価格：<?php print $assoc['value']?></p><p></p>
+			  <p>価格：<?php print $assoc['value'];?></p><p></p>
 			<!-- カラー -->
-			  <p>カラー：<?php print $assoc['color_name']?></p><p></p>
+			  <p>カラー：<?php print $assoc['color_name'];?></p><p></p>
 			</div>
 			<!-- カートボタン -->
 			  <div id="cart_botton">
-			  <p class="btn"><a href="遷移先?item=<?php print $_GET['item']?>&id=<?php print $_GET['color']?>">カートに入れる</a></p>
+			  <p class="btn"><a href="cart_add.php?item=<?php print $_GET['item']?>&color=<?php print $_GET['color']?>">カートに入れる</a></p>
 			</div>
 		  </div>
 		</div>

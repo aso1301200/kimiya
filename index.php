@@ -66,30 +66,31 @@
 					</div>					</form>
 
 					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
-								<div id="header-login-form">
+					<div id="header-login-form">
 					<br clear="all" />
-					<?php
-					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
-						//ログインしている場合の処理
-						print "<form method=\"post\" action=\"logout.php\">";
-						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
-						print "<input type=\"submit\" value=\"ログアウト\">";
-						print "</form>";
+						<?php
+						if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
+							//ログインしている場合の処理
+							print "<form method=\"post\" action=\"logout.php\">";
+							print "ようこそ！".$_SESSION['name']."さん！";
+							print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
+							print "<input type=\"submit\" value=\"ログアウト\">";
+							print "</form>";
 
-					}else{
-						//ログインしてない場合の処理
-						print "<form method=\"post\" action=\"login.php\">";
-						print "ログイン";
-						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
-						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
-						print "<input type=\"submit\" value=\"ログイン\">";
-						print "<a href=\"\">新規会員登録はこちらから</a>";
-						print "</form>";
-					}
-					?>
+						}else{
+							//ログインしてない場合の処理
+							print "<form method=\"post\" action=\"login.php\">";
+							print "ログイン";
+							print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
+							print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
+							print "<input type=\"submit\" value=\"ログイン\">";
+							print "<a href=\"\">新規会員登録はこちらから</a>";
+							print "</form>";
+						}
+						?>
+					</div>
 					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
-				</div>
+
 
 			</div><!-- #header-widget-area -->
 
