@@ -63,7 +63,7 @@
 			."AND gd.goods_details_number = gp.goods_details_number "
 			."AND gp.photo_number = p.photo_number "
 			."AND gp.direction_code = d.direction_code "
-			."AND gd.goods_number = '".quote_smart($_GET['item'])."' "
+			."AND gd.goods_details_number = '".quote_smart($_GET['item'])."' "
 			."AND gd.color_code = '".quote_smart($_GET['color'])."' "
 			."ORDER BY gp.direction_code ASC";
 
