@@ -13,74 +13,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="script.js"></script>
 <!-- ここまで、タグ関係 -->
-
-<?php
-//▼新規会員登録用変数
-session_start();
-
-if(!empty($_POST)){
-  //エラー項目の確認
-  if($_POST['first_name'] == ''){
-    $error['first_name'] = 'blank';
-  }
-  if($_POST['last_name'] == ''){
-  	$error['last_name'] = 'blank';
-  }
-  if($_POST['first_kana'] == ''){
-  	$error['first_kana'] = 'blank';
-  }
-  if($_POST['last_kana'] == ''){
-  	$error['last_kana'] = 'blank';
-  }
-  if($_POST['sex'] == ''){
-    $error['sex'] = 'blank';
-  }
-  if($_POST['year'] == ''){
-  	$error['year'] = 'blank';
-  }
-  if($_POST['month'] == ''){
-  	$error['month'] = 'blank';
-  }
-  if($_POST['day'] == ''){
-  	$error['day'] = 'blank';
-  }
-  if($_POST['address_number_head'] == ''){
-  	$error['address_number_head'] = 'blank';
-  }
-  if($_POST['address_number_bottom'] == ''){
-  	$error['address_number_bottom'] = 'blank';
-  }
-  if($_POST['phone_number_1'] == ''){
-  	$error['phone_number_1'] = 'blank';
-  }
-  if($_POST['phone_number_2'] == ''){
-  	$error['phone_number_2'] = 'blank';
-  }
-  if($_POST['phone_number_3'] == ''){
-  	$error['phone_number_3'] = 'blank';
-  }
-  if($_POST['email'] == ''){
-  	$error['email'] = 'blank';
-  }
-  if($_POST['jpb'] == ''){
-  	$error['jpb'] = 'blank';
-  }
-  if(strlen($_POST['pass']) < 8){
-    $error['pass'] = 'length';
-  }
-  if($_POST['pass'] == ''){
-    $error['pass'] = 'blank';
-  }
-
-  if(empty($error)){
-    $_SESSION['join'] = $_POST;
-    header('Location: user_confirmation.php');
-    exit();
-  }
-}
-
-?>
-
 <title>きみ屋</title>
 
 </head>
@@ -155,23 +87,23 @@ if(!empty($_POST)){
 		  <div id="lead">お客様の情報を入力し、「確認ページヘ」ボタンを押して下さい。</div>
 		  <div id="input_table">
 		    <form name="form1" id="form1" method="post" action="?">
+<!--         <input type="hidden" name="transactionid" value="8817517b795b38e142d73a543572064526d533cc"> -->
+<!--         <input type="hidden" name="mode" value="confirm"> -->
+
+<!--         <script type="text/javascript" charset="utf-8" src="https://api.socialplus.jp/zoff/test/form_assist/assist.js"></script> -->
 
         		<table summary="会員登録フォーム">
                   <tbody><tr class="name">
 		            <th>お名前</th>
-		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-						姓&nbsp;&nbsp;<input type="text" name="name01" value=""
-						maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
-
+						姓&nbsp;&nbsp;<input type="text" name="name01" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
 					    名&nbsp;&nbsp;<input type="text" name="name02" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
 		              </p>
 		            </td>
 		          </tr>
 		          <tr class="name">
 		            <th>お名前(フリガナ)</th>
-		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
 					    セイ&nbsp;<input type="text" name="kana01" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
@@ -181,7 +113,6 @@ if(!empty($_POST)){
 		          </tr>
 		          <tr class="gender">
 		            <th>性別</th>
-		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <div class="radio">
 		                <p>
@@ -390,10 +321,67 @@ if(!empty($_POST)){
 		            <th>住所</th>
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
+				      			    <select name="pref" style="">
+					      <option value="" selected="selected">都道府県を選択</option>
+					      <option label="北海道" value="1">北海道</option>
+<option label="青森県" value="2">青森県</option>
+<option label="岩手県" value="3">岩手県</option>
+<option label="宮城県" value="4">宮城県</option>
+<option label="秋田県" value="5">秋田県</option>
+<option label="山形県" value="6">山形県</option>
+<option label="福島県" value="7">福島県</option>
+<option label="茨城県" value="8">茨城県</option>
+<option label="栃木県" value="9">栃木県</option>
+<option label="群馬県" value="10">群馬県</option>
+<option label="埼玉県" value="11">埼玉県</option>
+<option label="千葉県" value="12">千葉県</option>
+<option label="東京都" value="13">東京都</option>
+<option label="神奈川県" value="14">神奈川県</option>
+<option label="新潟県" value="15">新潟県</option>
+<option label="富山県" value="16">富山県</option>
+<option label="石川県" value="17">石川県</option>
+<option label="福井県" value="18">福井県</option>
+<option label="山梨県" value="19">山梨県</option>
+<option label="長野県" value="20">長野県</option>
+<option label="岐阜県" value="21">岐阜県</option>
+<option label="静岡県" value="22">静岡県</option>
+<option label="愛知県" value="23">愛知県</option>
+<option label="三重県" value="24">三重県</option>
+<option label="滋賀県" value="25">滋賀県</option>
+<option label="京都府" value="26">京都府</option>
+<option label="大阪府" value="27">大阪府</option>
+<option label="兵庫県" value="28">兵庫県</option>
+<option label="奈良県" value="29">奈良県</option>
+<option label="和歌山県" value="30">和歌山県</option>
+<option label="鳥取県" value="31">鳥取県</option>
+<option label="島根県" value="32">島根県</option>
+<option label="岡山県" value="33">岡山県</option>
+<option label="広島県" value="34">広島県</option>
+<option label="山口県" value="35">山口県</option>
+<option label="徳島県" value="36">徳島県</option>
+<option label="香川県" value="37">香川県</option>
+<option label="愛媛県" value="38">愛媛県</option>
+<option label="高知県" value="39">高知県</option>
+<option label="福岡県" value="40">福岡県</option>
+<option label="佐賀県" value="41">佐賀県</option>
+<option label="長崎県" value="42">長崎県</option>
+<option label="熊本県" value="43">熊本県</option>
+<option label="大分県" value="44">大分県</option>
+<option label="宮崎県" value="45">宮崎県</option>
+<option label="鹿児島県" value="46">鹿児島県</option>
+<option label="沖縄県" value="47">沖縄県</option>
+
+					    </select>
+		                <!-- select -->
 		              <p>
 		              	<input type="text" name="addr01" value="" size="60" class="box300" style="; ime-mode: active;"><br>
+		     			市区町村名番地（例：千代田区神田神保町1-3-5）<br>
 		     		  </p>
-		              <p class="notice">都道府県名から入力してください</p>
+		              <p>
+		              	<input type="text" name="addr02" value="" size="60" class="box300" style="; ime-mode: active;"><br>
+		      			ビル名（例：Zoffビル6階）
+		      		  </p>
+		              <p class="notice">住所は2つに分けてご記入いただけます。ビル・マンション名は必ず記入してください。</p>
 		            </td>
 		          </tr>
 		          <tr class="number">
