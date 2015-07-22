@@ -83,6 +83,14 @@
 ?>
 <!-- ここまでデータベース -->
 
+<!-- ここから削除ボタンのJavaScript -->
+<script type="text/javascript">
+	function deleteCart(item){
+		location.href = "cart_delete.php?item="+item;
+	}
+</script>
+<!-- ここまで削除ボタンのJavaScript -->
+
 <div id="page">
 
 	<div id="masthead" role="banner">
@@ -204,7 +212,7 @@
 								print "<td>".$result_array[$j]['goods_name']."<br /><img src=\"images/test_images/".$result_array[$j]['photo_name']."\" class=\"img_goods\" /></td>";
 								print "<td>".$result_array[$j]['value']."円(税込 ".$result_array[$j]['value']*1.08."円)</td>";
 								print "<td>".$goods_count[$i][1]."個</td>";
-								print "<td><input type=\"button\" value=\"削除\" name=\"button_delete\" onclick=\"location: cart_delete.php?item=\"".$result_array[$j]['goods_details_number']."\" /\">";
+								print "<td><input type=\"button\" id=\"button_delete\" onclick=\"deleteCart('".$result_array[$j]['goods_details_number']."')\" value=\"削除\" /\">";
 
 								$point = $point + intval($result_array[$j]['value']) * $goods_count[$i][1] * 0.1;
 
