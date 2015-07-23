@@ -163,7 +163,7 @@
 // 							printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_details_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
 
 							print "<li class=\"type1\">";
-							print "<img src=\"images/test_images/".$array["photo_name"]."\" id=\"item_top_image\" style=\"\">";
+							print "<img src=\"images/test_images/".$array["photo_name"]."\" id=\"item_top_image\" style=\"width: 260px;height: 169px;float: none;\" />";
 							print "<dl>";
 							print "<dt>".$array["goods_name"]."</dt>";
 							print "<dd>".$array["goods_explain"]."</dd>";
