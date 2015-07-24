@@ -40,7 +40,7 @@
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
 	//詳細、画像などを含めた商品情報のすべて
-	$result = mysql_query("SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
+	$result = mysql_query("SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
 	//結果セットの行数を取得する
 	$rows = mysql_num_rows($result);
@@ -123,19 +123,58 @@
 	</p>
 
 	<!-- 商品一覧部分 -->
-	<p>
-			<table border="1" class="goods-table">
+		<div class="contents_item">
+
+			<div id="item_center">
+		<!-- カテゴリ検索欄 -->
+		<div id="item_category">
+		<ul>
+		<li><b>category</b></li>
+		<li class="category"><p>type</p></li>
+			<li><a href="">スクウェア</a></li>
+			<li><a href="">ホックス</a></li>
+			<li><a href="">ボストン</a></li>
+			<li><a href="">セオミート</a></li>
+			<li><a href="">その他</a></li>
+		<li class="category"><p>sex</p></li>
+			<li><a>Man</a></li>
+			<li><a>Leadies</a></li>
+			<li><a>Kids</a></li>
+		<li class="category"><p>color</p></li>
+			<li><a>Black</a></li>
+			<li><a>Red</a></li>
+			<li><a>Blue</a></li>
+
+		</ul>
+		</div>
+
+
 				<?php
-					for ($count = 0;$count < 8;$count++){
+
+
+					for ($count = 0;$count < 10;$count++){
 						if($count < $rows){
 							//SELECT文から1行取得し配列"$array"に代入
 							$array = mysql_fetch_array($result,MYSQL_BOTH);
-							if($count == 0 || $count == 4){
-								print "<tr>";
+							if($count == 0 || $count == 3 || $count == 6 || $count == 9){
+								print "<div id=\"item_list\">";
+								print "<ul>";
 							}
-							printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_details_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
-							if($count == 3 || $count == 7){
-								print "</tr>";
+// 							printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_details_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
+
+							print "<li class=\"type1\">";
+							print "<img src=\"images/test_images/".$array["photo_name"]."\" id=\"item_top_image\" style=\"width: 260px;height: 169px;float: none;\" />";
+							print "<dl>";
+							print "<dt>".$array["goods_name"]."</dt>";
+							print "<dd>".$array["goods_explain"]."</dd>";
+							printf("<dd><a href=\"item_tail.php?item=%s&color=%s\" target=\"_blank\">この商品を見る</a></dd>",$array["goods_details_number"],$array["color_code"]);
+							print "</dl>";
+							print "</li>";
+
+							//3.3.3.1という並び順で10個の商品を表示する
+							if($count == 2 || $count == 5 || $count == 8 || $count == 9){
+								print "</ul>";
+								print "</div>";
 							}
 						}else{
 							break;
@@ -149,8 +188,10 @@
 					mysql_close($link) or die("MySQL切断に失敗しました。");
 
 				?>
+
 			</table>
-	</p>
+		</div>
+
 </div>
 </body>
 </html>
