@@ -13,6 +13,76 @@
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="script.js"></script>
 <!-- ここまで、タグ関係 -->
+
+<?php
+//▼新規会員登録用変数
+session_start();
+
+$last_name = " ";
+
+// if(!empty($_POST)){
+//   //エラー項目の確認
+//   if($_POST['first_name'] == ''){
+//     $error['first_name'] = 'blank';
+//   }
+//   if($_POST['last_name'] == ''){
+//   	$error['last_name'] = 'blank';
+//   }
+//   if($_POST['first_kana'] == ''){
+//   	$error['first_kana'] = 'blank';
+//   }
+//   if($_POST['last_kana'] == ''){
+//   	$error['last_kana'] = 'blank';
+//   }
+//   if($_POST['sex'] == ''){
+//     $error['sex'] = 'blank';
+//   }
+//   if($_POST['year'] == ''){
+//   	$error['year'] = 'blank';
+//   }
+//   if($_POST['month'] == ''){
+//   	$error['month'] = 'blank';
+//   }
+//   if($_POST['day'] == ''){
+//   	$error['day'] = 'blank';
+//   }
+//   if($_POST['address_number_head'] == ''){
+//   	$error['address_number_head'] = 'blank';
+//   }
+//   if($_POST['address_number_bottom'] == ''){
+//   	$error['address_number_bottom'] = 'blank';
+//   }
+//   if($_POST['phone_number_1'] == ''){
+//   	$error['phone_number_1'] = 'blank';
+//   }
+//   if($_POST['phone_number_2'] == ''){
+//   	$error['phone_number_2'] = 'blank';
+//   }
+//   if($_POST['phone_number_3'] == ''){
+//   	$error['phone_number_3'] = 'blank';
+//   }
+//   if($_POST['email'] == ''){
+//   	$error['email'] = 'blank';
+//   }
+//   if($_POST['jpb'] == ''){
+//   	$error['jpb'] = 'blank';
+//   }
+//   if(strlen($_POST['pass']) < 8){
+//     $error['pass'] = 'length';
+//   }
+//   if($_POST['pass'] == ''){
+//     $error['pass'] = 'blank';
+//   }
+
+//   if(empty($error)){
+//     $_SESSION['join'] = $_POST;
+//     header('Location: user_confirmation.php');
+//     exit();
+//   }
+// }
+
+?>
+
 <title>きみ屋</title>
 
 </head>
@@ -86,11 +156,8 @@
 		<div id="content_input">
 		  <div id="lead">お客様の情報を入力し、「確認ページヘ」ボタンを押して下さい。</div>
 		  <div id="input_table">
-		    <form name="form1" id="form1" method="post" action="?">
-<!--         <input type="hidden" name="transactionid" value="8817517b795b38e142d73a543572064526d533cc"> -->
-<!--         <input type="hidden" name="mode" value="confirm"> -->
 
-<!--         <script type="text/javascript" charset="utf-8" src="https://api.socialplus.jp/zoff/test/form_assist/assist.js"></script> -->
+		    <form name="form1" id="form1" method="post" action="user_confirmation.php">
 
         		<table summary="会員登録フォーム">
                   <tbody><tr class="name">
@@ -98,8 +165,9 @@
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-						姓&nbsp;&nbsp;<input type="text" name="name01" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
-					    名&nbsp;&nbsp;<input type="text" name="name02" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
+						姓&nbsp;&nbsp;<input type="text" name="last_name" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
+
+					    名&nbsp;&nbsp;<input type="text" name="first_name" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
 		              </p>
 		            </td>
 		          </tr>
@@ -108,8 +176,8 @@
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					    セイ&nbsp;<input type="text" name="kana01" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
-					    メイ&nbsp;<input type="text" name="kana02" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
+					    セイ&nbsp;<input type="text" name="last_kana" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
+					    メイ&nbsp;<input type="text" name="first_kana" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
 		              </p>
 		            </td>
 		          </tr>
@@ -133,55 +201,7 @@
 					    <div class="select">
 					    <select name="year" style="">
 					      <option label="----" value="----">----</option>
-<option label="1901" value="1901">1901</option>
-<option label="1902" value="1902">1902</option>
-<option label="1903" value="1903">1903</option>
-<option label="1904" value="1904">1904</option>
-<option label="1905" value="1905">1905</option>
-<option label="1906" value="1906">1906</option>
-<option label="1907" value="1907">1907</option>
-<option label="1908" value="1908">1908</option>
-<option label="1909" value="1909">1909</option>
-<option label="1910" value="1910">1910</option>
-<option label="1911" value="1911">1911</option>
-<option label="1912" value="1912">1912</option>
-<option label="1913" value="1913">1913</option>
-<option label="1914" value="1914">1914</option>
-<option label="1915" value="1915">1915</option>
-<option label="1916" value="1916">1916</option>
-<option label="1917" value="1917">1917</option>
-<option label="1918" value="1918">1918</option>
-<option label="1919" value="1919">1919</option>
-<option label="1920" value="1920">1920</option>
-<option label="1921" value="1921">1921</option>
-<option label="1922" value="1922">1922</option>
-<option label="1923" value="1923">1923</option>
-<option label="1924" value="1924">1924</option>
-<option label="1925" value="1925">1925</option>
-<option label="1926" value="1926">1926</option>
-<option label="1927" value="1927">1927</option>
-<option label="1928" value="1928">1928</option>
-<option label="1929" value="1929">1929</option>
-<option label="1930" value="1930">1930</option>
-<option label="1931" value="1931">1931</option>
-<option label="1932" value="1932">1932</option>
-<option label="1933" value="1933">1933</option>
-<option label="1934" value="1934">1934</option>
-<option label="1935" value="1935">1935</option>
-<option label="1936" value="1936">1936</option>
-<option label="1937" value="1937">1937</option>
-<option label="1938" value="1938">1938</option>
-<option label="1939" value="1939">1939</option>
-<option label="1940" value="1940">1940</option>
-<option label="1941" value="1941">1941</option>
-<option label="1942" value="1942">1942</option>
-<option label="1943" value="1943">1943</option>
-<option label="1944" value="1944">1944</option>
-<option label="1945" value="1945">1945</option>
-<option label="1946" value="1946">1946</option>
-<option label="1947" value="1947">1947</option>
-<option label="1948" value="1948">1948</option>
-<option label="1949" value="1949">1949</option>
+
 <option label="1950" value="1950">1950</option>
 <option label="1951" value="1951">1951</option>
 <option label="1952" value="1952">1952</option>
@@ -316,7 +336,8 @@
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					    〒 &nbsp;<input type="text" name="zip01" value="" maxlength="3" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;-&nbsp;<input type="text" name="zip02" value="" maxlength="4" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;
+					    〒 &nbsp;<input type="text" name="address_number_head" value="" maxlength="3" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;-&nbsp;
+					    <input type="text" name="address_number_bottom" value="" maxlength="4" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;
 		    			</p>
 		            </td>
 		          </tr>
@@ -324,67 +345,10 @@
 		            <th>住所</th>
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
-				      			    <select name="pref" style="">
-					      <option value="" selected="selected">都道府県を選択</option>
-					      <option label="北海道" value="1">北海道</option>
-<option label="青森県" value="2">青森県</option>
-<option label="岩手県" value="3">岩手県</option>
-<option label="宮城県" value="4">宮城県</option>
-<option label="秋田県" value="5">秋田県</option>
-<option label="山形県" value="6">山形県</option>
-<option label="福島県" value="7">福島県</option>
-<option label="茨城県" value="8">茨城県</option>
-<option label="栃木県" value="9">栃木県</option>
-<option label="群馬県" value="10">群馬県</option>
-<option label="埼玉県" value="11">埼玉県</option>
-<option label="千葉県" value="12">千葉県</option>
-<option label="東京都" value="13">東京都</option>
-<option label="神奈川県" value="14">神奈川県</option>
-<option label="新潟県" value="15">新潟県</option>
-<option label="富山県" value="16">富山県</option>
-<option label="石川県" value="17">石川県</option>
-<option label="福井県" value="18">福井県</option>
-<option label="山梨県" value="19">山梨県</option>
-<option label="長野県" value="20">長野県</option>
-<option label="岐阜県" value="21">岐阜県</option>
-<option label="静岡県" value="22">静岡県</option>
-<option label="愛知県" value="23">愛知県</option>
-<option label="三重県" value="24">三重県</option>
-<option label="滋賀県" value="25">滋賀県</option>
-<option label="京都府" value="26">京都府</option>
-<option label="大阪府" value="27">大阪府</option>
-<option label="兵庫県" value="28">兵庫県</option>
-<option label="奈良県" value="29">奈良県</option>
-<option label="和歌山県" value="30">和歌山県</option>
-<option label="鳥取県" value="31">鳥取県</option>
-<option label="島根県" value="32">島根県</option>
-<option label="岡山県" value="33">岡山県</option>
-<option label="広島県" value="34">広島県</option>
-<option label="山口県" value="35">山口県</option>
-<option label="徳島県" value="36">徳島県</option>
-<option label="香川県" value="37">香川県</option>
-<option label="愛媛県" value="38">愛媛県</option>
-<option label="高知県" value="39">高知県</option>
-<option label="福岡県" value="40">福岡県</option>
-<option label="佐賀県" value="41">佐賀県</option>
-<option label="長崎県" value="42">長崎県</option>
-<option label="熊本県" value="43">熊本県</option>
-<option label="大分県" value="44">大分県</option>
-<option label="宮崎県" value="45">宮崎県</option>
-<option label="鹿児島県" value="46">鹿児島県</option>
-<option label="沖縄県" value="47">沖縄県</option>
-
-					    </select>
-		                <!-- select -->
 		              <p>
-		              	<input type="text" name="addr01" value="" size="60" class="box300" style="; ime-mode: active;"><br>
-		     			市区町村名番地（例：千代田区神田神保町1-3-5）<br>
+		              	<input type="text" name="address" value="" size="60" class="box300" style="; ime-mode: active;"><br>
 		     		  </p>
-		              <p>
-		              	<input type="text" name="addr02" value="" size="60" class="box300" style="; ime-mode: active;"><br>
-		      			ビル名（例：Zoffビル6階）
-		      		  </p>
-		              <p class="notice">住所は2つに分けてご記入いただけます。ビル・マンション名は必ず記入してください。</p>
+		              <p class="notice">都道府県名から入力してください</p>
 		            </td>
 		          </tr>
 		          <tr class="number">
@@ -392,7 +356,9 @@
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					   <input type="text" name="tel01" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;<input type="text" name="tel02" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;<input type="text" name="tel03" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">
+					   <input type="text" name="phone_number_1" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;
+					   <input type="text" name="phone_number_2" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;
+					   <input type="text" name="phone_number_3" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">
 					  </p>
 		            </td>
 		          </tr>
@@ -401,7 +367,7 @@
 		            <th>メールアドレス</th>
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
-					    			    			                  <p>
+		              <p>
 		    			<input type="text" name="email" value="" style="; ime-mode: disabled;" maxlength="200" size="40" class="box300"><br>
 		              </p>
 		              <p>
@@ -459,7 +425,9 @@
         <div class="tblareabtn button">
           <p><input type="submit" class="box150 confirm" alt="確認ページへ" name="confirm" id="confirm"></p>
         </div>
-		  </div>
+        </form>
+
+		</div>
 		</div>
 
 
