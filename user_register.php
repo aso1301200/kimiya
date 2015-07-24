@@ -18,66 +18,68 @@
 //▼新規会員登録用変数
 session_start();
 
-if(!empty($_POST)){
-  //エラー項目の確認
-  if($_POST['first_name'] == ''){
-    $error['first_name'] = 'blank';
-  }
-  if($_POST['last_name'] == ''){
-  	$error['last_name'] = 'blank';
-  }
-  if($_POST['first_kana'] == ''){
-  	$error['first_kana'] = 'blank';
-  }
-  if($_POST['last_kana'] == ''){
-  	$error['last_kana'] = 'blank';
-  }
-  if($_POST['sex'] == ''){
-    $error['sex'] = 'blank';
-  }
-  if($_POST['year'] == ''){
-  	$error['year'] = 'blank';
-  }
-  if($_POST['month'] == ''){
-  	$error['month'] = 'blank';
-  }
-  if($_POST['day'] == ''){
-  	$error['day'] = 'blank';
-  }
-  if($_POST['address_number_head'] == ''){
-  	$error['address_number_head'] = 'blank';
-  }
-  if($_POST['address_number_bottom'] == ''){
-  	$error['address_number_bottom'] = 'blank';
-  }
-  if($_POST['phone_number_1'] == ''){
-  	$error['phone_number_1'] = 'blank';
-  }
-  if($_POST['phone_number_2'] == ''){
-  	$error['phone_number_2'] = 'blank';
-  }
-  if($_POST['phone_number_3'] == ''){
-  	$error['phone_number_3'] = 'blank';
-  }
-  if($_POST['email'] == ''){
-  	$error['email'] = 'blank';
-  }
-  if($_POST['jpb'] == ''){
-  	$error['jpb'] = 'blank';
-  }
-  if(strlen($_POST['pass']) < 8){
-    $error['pass'] = 'length';
-  }
-  if($_POST['pass'] == ''){
-    $error['pass'] = 'blank';
-  }
+$last_name = " ";
 
-  if(empty($error)){
-    $_SESSION['join'] = $_POST;
-    header('Location: user_confirmation.php');
-    exit();
-  }
-}
+// if(!empty($_POST)){
+//   //エラー項目の確認
+//   if($_POST['first_name'] == ''){
+//     $error['first_name'] = 'blank';
+//   }
+//   if($_POST['last_name'] == ''){
+//   	$error['last_name'] = 'blank';
+//   }
+//   if($_POST['first_kana'] == ''){
+//   	$error['first_kana'] = 'blank';
+//   }
+//   if($_POST['last_kana'] == ''){
+//   	$error['last_kana'] = 'blank';
+//   }
+//   if($_POST['sex'] == ''){
+//     $error['sex'] = 'blank';
+//   }
+//   if($_POST['year'] == ''){
+//   	$error['year'] = 'blank';
+//   }
+//   if($_POST['month'] == ''){
+//   	$error['month'] = 'blank';
+//   }
+//   if($_POST['day'] == ''){
+//   	$error['day'] = 'blank';
+//   }
+//   if($_POST['address_number_head'] == ''){
+//   	$error['address_number_head'] = 'blank';
+//   }
+//   if($_POST['address_number_bottom'] == ''){
+//   	$error['address_number_bottom'] = 'blank';
+//   }
+//   if($_POST['phone_number_1'] == ''){
+//   	$error['phone_number_1'] = 'blank';
+//   }
+//   if($_POST['phone_number_2'] == ''){
+//   	$error['phone_number_2'] = 'blank';
+//   }
+//   if($_POST['phone_number_3'] == ''){
+//   	$error['phone_number_3'] = 'blank';
+//   }
+//   if($_POST['email'] == ''){
+//   	$error['email'] = 'blank';
+//   }
+//   if($_POST['jpb'] == ''){
+//   	$error['jpb'] = 'blank';
+//   }
+//   if(strlen($_POST['pass']) < 8){
+//     $error['pass'] = 'length';
+//   }
+//   if($_POST['pass'] == ''){
+//     $error['pass'] = 'blank';
+//   }
+
+//   if(empty($error)){
+//     $_SESSION['join'] = $_POST;
+//     header('Location: user_confirmation.php');
+//     exit();
+//   }
+// }
 
 ?>
 
@@ -154,7 +156,8 @@ if(!empty($_POST)){
 		<div id="content_input">
 		  <div id="lead">お客様の情報を入力し、「確認ページヘ」ボタンを押して下さい。</div>
 		  <div id="input_table">
-		    <form name="form1" id="form1" method="post" action="?">
+
+		    <form name="form1" id="form1" method="post" action="user_confirmation.php">
 
         		<table summary="会員登録フォーム">
                   <tbody><tr class="name">
@@ -162,10 +165,9 @@ if(!empty($_POST)){
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-						姓&nbsp;&nbsp;<input type="text" name="name01" value=""
-						maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
+						姓&nbsp;&nbsp;<input type="text" name="last_name" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
 
-					    名&nbsp;&nbsp;<input type="text" name="name02" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
+					    名&nbsp;&nbsp;<input type="text" name="first_name" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
 		              </p>
 		            </td>
 		          </tr>
@@ -174,8 +176,8 @@ if(!empty($_POST)){
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					    セイ&nbsp;<input type="text" name="kana01" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
-					    メイ&nbsp;<input type="text" name="kana02" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
+					    セイ&nbsp;<input type="text" name="last_kana" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">&nbsp;
+					    メイ&nbsp;<input type="text" name="first_kana" value="" maxlength="50" style="; ime-mode: active;" size="15" class="box120">
 		              </p>
 		            </td>
 		          </tr>
@@ -199,55 +201,7 @@ if(!empty($_POST)){
 					    <div class="select">
 					    <select name="year" style="">
 					      <option label="----" value="----">----</option>
-<option label="1901" value="1901">1901</option>
-<option label="1902" value="1902">1902</option>
-<option label="1903" value="1903">1903</option>
-<option label="1904" value="1904">1904</option>
-<option label="1905" value="1905">1905</option>
-<option label="1906" value="1906">1906</option>
-<option label="1907" value="1907">1907</option>
-<option label="1908" value="1908">1908</option>
-<option label="1909" value="1909">1909</option>
-<option label="1910" value="1910">1910</option>
-<option label="1911" value="1911">1911</option>
-<option label="1912" value="1912">1912</option>
-<option label="1913" value="1913">1913</option>
-<option label="1914" value="1914">1914</option>
-<option label="1915" value="1915">1915</option>
-<option label="1916" value="1916">1916</option>
-<option label="1917" value="1917">1917</option>
-<option label="1918" value="1918">1918</option>
-<option label="1919" value="1919">1919</option>
-<option label="1920" value="1920">1920</option>
-<option label="1921" value="1921">1921</option>
-<option label="1922" value="1922">1922</option>
-<option label="1923" value="1923">1923</option>
-<option label="1924" value="1924">1924</option>
-<option label="1925" value="1925">1925</option>
-<option label="1926" value="1926">1926</option>
-<option label="1927" value="1927">1927</option>
-<option label="1928" value="1928">1928</option>
-<option label="1929" value="1929">1929</option>
-<option label="1930" value="1930">1930</option>
-<option label="1931" value="1931">1931</option>
-<option label="1932" value="1932">1932</option>
-<option label="1933" value="1933">1933</option>
-<option label="1934" value="1934">1934</option>
-<option label="1935" value="1935">1935</option>
-<option label="1936" value="1936">1936</option>
-<option label="1937" value="1937">1937</option>
-<option label="1938" value="1938">1938</option>
-<option label="1939" value="1939">1939</option>
-<option label="1940" value="1940">1940</option>
-<option label="1941" value="1941">1941</option>
-<option label="1942" value="1942">1942</option>
-<option label="1943" value="1943">1943</option>
-<option label="1944" value="1944">1944</option>
-<option label="1945" value="1945">1945</option>
-<option label="1946" value="1946">1946</option>
-<option label="1947" value="1947">1947</option>
-<option label="1948" value="1948">1948</option>
-<option label="1949" value="1949">1949</option>
+
 <option label="1950" value="1950">1950</option>
 <option label="1951" value="1951">1951</option>
 <option label="1952" value="1952">1952</option>
@@ -382,7 +336,8 @@ if(!empty($_POST)){
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					    〒 &nbsp;<input type="text" name="zip01" value="" maxlength="3" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;-&nbsp;<input type="text" name="zip02" value="" maxlength="4" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;
+					    〒 &nbsp;<input type="text" name="address_number_head" value="" maxlength="3" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;-&nbsp;
+					    <input type="text" name="address_number_bottom" value="" maxlength="4" style="; ime-mode: disabled;" size="6" class="box60">&nbsp;
 		    			</p>
 		            </td>
 		          </tr>
@@ -391,7 +346,7 @@ if(!empty($_POST)){
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-		              	<input type="text" name="addr01" value="" size="60" class="box300" style="; ime-mode: active;"><br>
+		              	<input type="text" name="address" value="" size="60" class="box300" style="; ime-mode: active;"><br>
 		     		  </p>
 		              <p class="notice">都道府県名から入力してください</p>
 		            </td>
@@ -401,7 +356,9 @@ if(!empty($_POST)){
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
 		              <p>
-					   <input type="text" name="tel01" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;<input type="text" name="tel02" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;<input type="text" name="tel03" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">
+					   <input type="text" name="phone_number_1" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;
+					   <input type="text" name="phone_number_2" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">&nbsp;-&nbsp;
+					   <input type="text" name="phone_number_3" value="" maxlength="6" size="6" style="; ime-mode: disabled;" class="box60">
 					  </p>
 		            </td>
 		          </tr>
@@ -410,7 +367,7 @@ if(!empty($_POST)){
 		            <th>メールアドレス</th>
 		            <td class="must"><img src="images/form_icon_must.png" alt="必須"></td>
 		            <td class="cont">
-					    			    			                  <p>
+		              <p>
 		    			<input type="text" name="email" value="" style="; ime-mode: disabled;" maxlength="200" size="40" class="box300"><br>
 		              </p>
 		              <p>
@@ -469,7 +426,8 @@ if(!empty($_POST)){
           <p><input type="submit" class="box150 confirm" alt="確認ページへ" name="confirm" id="confirm"></p>
         </div>
         </form>
-		  </div>
+
+		</div>
 		</div>
 
 
