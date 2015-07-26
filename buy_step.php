@@ -171,17 +171,17 @@
 		<form method="POST" action="">
 			<table>
 			<td>会員情報
-				<?php 
+				<?php
 					if(empty($_SESSION['id'])){
 						//ログインしていない人の情報入力フォーム
-						
+
 					}else{
 						//ログインしている人の情報入力フォーム
 					}
 				?>
 			</td>
 			<td>商品情報
-				<?php 
+				<?php
 				?>
 			</td>
 			</table>
