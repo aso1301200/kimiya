@@ -2,20 +2,7 @@
 <!DOCTYPE html>
 <html lang=''>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta http-equiv="Content-Style-Type" content="text/css">
-
-<!-- タグ関係（MenuMaker） 2015/06/07 -->
-<meta charset='utf-8'>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css" type="text/css">
-<link rel="stylesheet" href="styles.css" type="text/css">
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="script.js"></script>
-<!-- ここまで、タグ関係 -->
-<title>きみ屋</title>
-
+<?php include '/common/metadata.html';?>
 </head>
 <body>
 
@@ -74,79 +61,16 @@
 
 <div id="page">
 
-	<div id="masthead" role="banner">
-
-		<div id="header-inner">
-
-			<div id="header-title-area">
-
-				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
-
-			</div><!-- #header-title-area -->
-
-			<div id="header-widget-area">
-				<form role="search" method="get" id="searchform" class="searchform" action="*******">
-					<div>
-						<input type="text" value="" name="s" id="s">
-						<input type="submit" id="searchsubmit" value="検索">
-					</div>					</form>
-
-					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
-								<div id="header-login-form">
-					<br clear="all" />
-					<?php
-					if (!empty($_SESSION['id']) && $_SESSION['data'] === "user"){
-						//ログインしている場合の処理
-						print "<form method=\"post\" action=\"logout.php\">";
-						print "ようこそ！".$_SESSION['name']."さん！";
-						print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
-						print "<input type=\"submit\" value=\"ログアウト\">";
-						print "</form>";
-
-					}else{
-						//ログインしてない場合の処理
-						print "<form method=\"post\" action=\"login.php\">";
-						print "ログイン";
-						print "ID:<input type=\"text\" value=\"\" name=\"id\" id=\"form-id\">";
-						print "パスワード:<input type=\"password\" value=\"\" name=\"password\" id=\"form-password\">";
-						print "<input type=\"submit\" value=\"ログイン\">";
-						print "<a href=\"\">新規会員登録はこちらから</a>";
-						print "</form>";
-					}
-					?>
-					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
-				</div>
-
-			</div><!-- #header-widget-area -->
-
-
-					<div id="header-top-image">
-						<!-- <img src="images/test_images/test_top.png" style="width:100%;height:100%;">トップの上部のおしゃれな絵-->
-					</div>
-
-
-		</div><!-- .header-inner -->
-
-	</div><!-- #masthead -->
+	<!-- ヘッダー部分 -->
+	<?php include '/common/header.html';?>
+	<!-- ここまでヘッダー部分 -->
 
 	<div class="clear"></div>
 
 	<!-- タグ部メニュー -->
-	<p>
-		<div id="cssmenu">
-		<ul>
-				<li><a href='index.php'><span>ホーム</span></a></li>
-				<li><a href='#'><span>ご利用案内</span></a></li>
-				<li><a href='#'><span>新規会員登録</span></a></li>
-				<li><a href='#'><span>注文商品紹介</span></a></li>
-				<li><a href='#'><span>買い物かご</span></a></li>
-				<li><a href='#'><span>サイトマップ</span></a></li>
-				<li class='last'><a href='#'><span>問い合わせ</span></a></li>
-		</ul>
-		</div>
-	</p>
+	<p><?php include '/common/cssmenu.html';?></p>
+	<!-- ここまでタグ部メニュー -->
 
-	<br clear="all" />
 	<!-- カートの中身 -->
 	<p>
 		<form method="POST" action="buy_submited.php">
@@ -156,6 +80,7 @@
 				}
 			?>
 			<table>
+
 			<tr>
 				<td>
 					<!-- ▼個人情報入力フォーム -->
@@ -353,6 +278,9 @@
 					<!-- ▲商品一覧 -->
 				</td>
 			</tr>
+
+
+
 			</table>
 		</form>
 		<p>

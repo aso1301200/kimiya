@@ -1,155 +1,59 @@
 <!DOCTYPE html>
 <html lang=''>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<meta http-equiv="Content-Style-Type" content="text/css">
-
-<!-- タグ関係（MenuMaker） 2015/06/07 -->
-<meta charset='utf-8'>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css" type="text/css">
-<link rel="stylesheet" href="styles.css" type="text/css">
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="script.js"></script>
-<!-- ここまで、タグ関係 -->
-
-<?php
-//▼新規会員登録用変数
-session_start();
-
-$last_name = " ";
-
-// if(!empty($_POST)){
-//   //エラー項目の確認
-//   if($_POST['first_name'] == ''){
-//     $error['first_name'] = 'blank';
-//   }
-//   if($_POST['last_name'] == ''){
-//   	$error['last_name'] = 'blank';
-//   }
-//   if($_POST['first_kana'] == ''){
-//   	$error['first_kana'] = 'blank';
-//   }
-//   if($_POST['last_kana'] == ''){
-//   	$error['last_kana'] = 'blank';
-//   }
-//   if($_POST['sex'] == ''){
-//     $error['sex'] = 'blank';
-//   }
-//   if($_POST['year'] == ''){
-//   	$error['year'] = 'blank';
-//   }
-//   if($_POST['month'] == ''){
-//   	$error['month'] = 'blank';
-//   }
-//   if($_POST['day'] == ''){
-//   	$error['day'] = 'blank';
-//   }
-//   if($_POST['address_number_head'] == ''){
-//   	$error['address_number_head'] = 'blank';
-//   }
-//   if($_POST['address_number_bottom'] == ''){
-//   	$error['address_number_bottom'] = 'blank';
-//   }
-//   if($_POST['phone_number_1'] == ''){
-//   	$error['phone_number_1'] = 'blank';
-//   }
-//   if($_POST['phone_number_2'] == ''){
-//   	$error['phone_number_2'] = 'blank';
-//   }
-//   if($_POST['phone_number_3'] == ''){
-//   	$error['phone_number_3'] = 'blank';
-//   }
-//   if($_POST['email'] == ''){
-//   	$error['email'] = 'blank';
-//   }
-//   if($_POST['jpb'] == ''){
-//   	$error['jpb'] = 'blank';
-//   }
-//   if(strlen($_POST['pass']) < 8){
-//     $error['pass'] = 'length';
-//   }
-//   if($_POST['pass'] == ''){
-//     $error['pass'] = 'blank';
-//   }
-
-//   if(empty($error)){
-//     $_SESSION['join'] = $_POST;
-//     header('Location: user_confirmation.php');
-//     exit();
-//   }
-// }
-
-?>
-
-<title>きみ屋</title>
-
+<?php include '/common/metadata.html';?>
 </head>
 <body>
+
+<!-- sessionの開始(全てのページに入力してください) -->
+<?php
+	session_start();
+?>
+
+<!-- データベース準備 -->
+<?php
+	$url = "localhost";
+	$user = "root";
+	$pass = "root";
+	$db = "kimiya";
+
+	// MySQLへ接続する
+	$link = mysql_connect($url,$user,$pass) or die("MySQLへの接続に失敗しました。");
+
+	// データベースを選択する
+	$sdb = mysql_select_db($db,$link) or die("データベースの選択に失敗しました。");
+
+	// クエリを送信する
+	//文字化け対策
+	mysql_query("SET NAMES 'utf8'");
+	//詳細、画像などを含めた商品情報のすべて
+	$result = mysql_query("SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
+
+	//結果セットの行数を取得する
+	$rows = mysql_num_rows($result);
+?>
+<!-- ここまでデータベース -->
+
 <div id="page">
 
-	<div id="masthead" role="banner">
-		<div id="header-inner">
-			<div id="header-title-area">
-				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
-			</div><!-- #header-title-area -->
-			<div id="header-widget-area">
-				<form role="search" method="get" id="searchform" class="searchform" action="*******">
-					<div>
-						<input type="text" value="" name="s" id="s">
-						<input type="submit" id="searchsubmit" value="検索">
-					</div>					</form>
-			</div><!-- #header-widget-area -->
-			<div class="clear"></div>
-		</div><!-- .header-inner -->
-	</div><!-- #masthead -->
+	<!-- ヘッダー部分 -->
+	<?php include '/common/header.html';?>
+	<!-- ここまでヘッダー部分 -->
 
-	<p>
-		<div id="header-top-image">
-			<img src="">トップ		<!-- トップの上部のおしゃれな絵 -->
-		</div>
-	</p>
+	<div class="clear"></div>
 
 	<!-- タグ部メニュー -->
-	<p>
-		<div id="cssmenu">
-			<ul>
-				<li><a href='#'><span>ホーム</span></a></li>
-				<li><a href='#'><span>ご利用案内</span></a></li>
-				<li><a href='#'><span>新規会員登録</span></a></li>
-				<li><a href='#'><span>注文商品紹介</span></a></li>
-				<li><a href='#'><span>買い物かご</span></a></li>
-				<li><a href='#'><span>サイトマップ</span></a></li>
-				<li class='last'><a href='#'><span>問い合わせ</span></a></li>
-			</ul>
-		</div>
-	</p>
+	<p><?php include '/common/cssmenu.html';?></p>
+	<!-- ここまでタグ部メニュー -->
 
 	<div class="contents_item">
+		<div id="item_center">
 
-	<div id="item_center">
 		<!-- カテゴリ検索欄 -->
-		<div id="item_category">
-		<ul>
-		<li><b>category</b></li>
-		<li class="category"><p>type</p></li>
-			<li><a href="">スクウェア</a></li>
-			<li><a href="">ホックス</a></li>
-			<li><a href="">ボストン</a></li>
-			<li><a href="">セオミート</a></li>
-			<li><a href="">その他</a></li>
-		<li class="category"><p>sex</p></li>
-			<li><a>Man</a></li>
-			<li><a>Leadies</a></li>
-			<li><a>Kids</a></li>
-		<li class="category"><p>color</p></li>
-			<li><a>Black</a></li>
-			<li><a>Red</a></li>
-			<li><a>Blue</a></li>
+		<?php include '/common/item_category.html';?>
+		<!-- ここままでカテゴリ検索欄 -->
 
-		</ul>
-		</div>
+
 
 		<!-- 新規会員登録 -->
 		<div id="register_title"><font size="5">新規会員登録</font></div>
