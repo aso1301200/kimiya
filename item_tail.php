@@ -159,7 +159,7 @@
 					<div id="item_explanation">
 					  <!-- 価格 -->
 					  <p style="border-bottom: dotted 1px #000;">
-					  <font size="8" color="red"><?php print $assoc['value'];?></font></p><br><br>
+					  <font size="8" color="red">\<?php print $assoc['value'];?></font></p><br><br>
 					  <!-- サイズ -->
 					  <div style="border-bottom: dotted 1px #000; padding-bottom: 1px;">
 					  <div style="text-align: left; float: left;"><font size="4">Size</font></div>
@@ -201,7 +201,7 @@
 					  	}
 					  ?></p><p></p><br>
 					<!-- 価格 -->
-					  <p>価格：<?php print $assoc['value'];?></p><p></p>
+					  <p>価格：<?php print $assoc['value'];?></p><p></p></br>
 					<!-- カラー -->
 					  <p>カラー：<?php print $assoc['color_name'];?></p><p></p>
 					</div>

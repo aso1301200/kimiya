@@ -70,7 +70,7 @@
 							print "<dl>";
 							print "<dt>".$array["goods_name"]."</dt>";
 							print "<dd>".$array["goods_explain"]."</dd>";
-							printf("<dd><a href=\"item_tail.php?item=%s&color=%s\" target=\"_blank\">この商品を見る</a></dd>",$array["goods_details_number"],$array["color_code"]);
+							printf("<dd><a href=\"item_tail.php?item=%s&color=%s\" target=\"_self\">この商品を見る</a></dd>",$array["goods_details_number"],$array["color_code"]);
 							print "</dl>";
 							print "</li>";
 
@@ -95,5 +95,6 @@
 		</div>
 
 </div>
+<div class="footer">copyright</div>
 </body>
 </html>

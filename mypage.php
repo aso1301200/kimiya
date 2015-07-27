@@ -176,7 +176,7 @@
 				</div>
 		</div>
 	</div>
-
+<div class="footer">copyright</div>
 </div>
 </body>
 </html>

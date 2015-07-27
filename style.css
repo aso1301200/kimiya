@@ -71,19 +71,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 #header-title-area .site-title-img {
 	/*border: 1px solid #000000;*/
-
 }
 
 #header-widget-area {
 	/*border: 1px solid #000000;*/
 	padding: 0px;
-	position: absolute;
-	bottom: 3px;
-	right: 3px;
 }
 
 #header-widget-area .searchform {
-	float: right;
+/* 	float: right; */
 }
 
 #header-widget-area .searchform input#s {
@@ -128,7 +124,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 .footer {
 	width: 100%;
 	height: 20px;
-	margin-top: 20px;
+	margin-top: 0px;
 	background-color: #58ACFA;
 }
 
@@ -212,7 +208,7 @@ img.img_goods {
 
 /* item_top ----------------------------------------------------*/
 .contents_item {
-	height: 1000px;
+/* 	height: 1000px; */
 	background-color: #FAFAFA;
 	padding: 10px;
 }
@@ -226,6 +222,7 @@ img.img_goods {
 /*----カテゴリ検索欄----*/
 #item_category {
 	width: 300px;
+	height: 700px;
 	float: left;
 	margin-right: 10px;
 }
@@ -259,7 +256,7 @@ img.img_goods {
 #item_list ul {
 	list-style: none;
 	top: 0;
-	height: 280px;
+	height: 200px;
 	margin: 0;
 	padding: 0;
 	text-align: center;
@@ -561,7 +558,7 @@ input[type="radio"] {
 
 #item_cart {
 	width: 200px;
-	height: 220px;
+	height: 255px;
 	float: right;
 	margin-left: 10px;
 	background-color: #ffffff;
@@ -571,7 +568,7 @@ input[type="radio"] {
 
 #cart_info {
 	width: 130px;
-	height: 120px;
+	height: 160px;
 	margin: 10px;
 }
 
@@ -632,7 +629,7 @@ table.goods-table {
 }
 
 #header-login-form input[type=text] ,
-input[type=password]{
+#header-login-form input[type=password]{
    border-radius: 5px;
    -moz-border-radius: 5px;
    -webkit-border-radius: 5px;
