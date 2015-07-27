@@ -344,7 +344,7 @@
 			//▼▼ポイント処理
 			//合計ポイント格納変数
 			$point_sum = intval($assoc_user['point']);
-			$point_sum = $point_sum + $_SESSION['point_get'] - $assoc_user['point'];
+			$point_sum = $point_sum + intval($_SESSION['point_get']) - intval($assoc_user['point']);
 
 			$sql_point = "UPDATE SET point = ".quote_smart($point_sum)." FROM user WHERE user_id = '".quote_smart($_SESSION['id'])."'";
 			mysql_query($sql_point,$link);

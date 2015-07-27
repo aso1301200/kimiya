@@ -287,7 +287,7 @@
 			<a href="cart_check.php">カート画面に戻る</a>
 		</p>
 	</p>
-
+<div class="footer">copyright</div>
 </div>
 </body>
 </html>
