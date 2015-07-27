@@ -277,13 +277,13 @@
 			$sql_count = "SELECT * FROM buy ";
 			$result_count = mysql_query($sql_count,$link);
 
-			$rows = mysql_fetch_row($result_count);
+			$rows = intval(mysql_fetch_row($result_count)) + 1;
 
 			//時間を正しい形式にする
 			$time = (String)$_POST['buy_hour'].":".(String)$_POST['buy_minute'];
 
 			//▼▼購入情報にinsert
-			$sql_buy = "INSERT INTO buy VALUES('".quote_smart((String)($rows + 1))."','".quote_smart($_SESSION['id'])."','".quote_smart(today())."','".quote_smart($_POST['buy_address'])."','".(String)$month."-".(String)$day."','".(String)$time."','')";
+			$sql_buy = "INSERT INTO buy VALUES('".quote_smart((String)$rows)."','".quote_smart($_SESSION['id'])."','".quote_smart(today())."','".quote_smart($_POST['buy_address'])."','".quote_smart((String)$month."-".(String)$day)."','".quote_smart($time)."','')";
 			mysql_query($sql_buy,$link);
 			//▲▲購入情報にinsert
 
@@ -304,7 +304,7 @@
 						mysql_data_seek($result_value, 0);
 
 						//カートテーブルにinsertするSQL文
-						$sql_cart = "INSERT INTO cart VALUES('".quote_smart((String)($rows + 1))."','".quote_smart($cart_number)."','".quote_smart($_SESSION['goods_buy'][$i])."',".quote_smart($value).",".quote_smart($_POST['buy_point']).",'".quote_smart(today())."')";
+						$sql_cart = "INSERT INTO cart VALUES('".quote_smart((String)$rows)."','".quote_smart($cart_number)."','".quote_smart($_SESSION['goods_buy'][$i])."',".quote_smart($value).",".quote_smart($_POST['buy_point']).",'".quote_smart(today())."')";
 						mysql_query($sql_cart,$link);
 
 						$cart_number = $cart_number + 1;
@@ -337,6 +337,8 @@
 					unset($_SESSION['cart_array']);
 					$_SESSION['cart_array'] = $array;
 					$_SESSION['cart_count'] = (String)$count;
+
+					$array = array();
 				}
 			}
 			//▲▲セッションの内容を適切なものに置き換える
@@ -344,11 +346,17 @@
 			//▼▼ポイント処理
 			//合計ポイント格納変数
 			$point_sum = intval($assoc_user['point']);
-			$point_sum = $point_sum + intval($_SESSION['point_get']) - intval($assoc_user['point']);
+			$point_sum = $point_sum + intval($_SESSION['point_get']) - intval($_POST['buy_point']);
 
-			$sql_point = "UPDATE SET point = ".quote_smart($point_sum)." FROM user WHERE user_id = '".quote_smart($_SESSION['id'])."'";
+			$sql_point = "UPDATE user SET point = ".quote_smart($point_sum)." WHERE user_id = '".quote_smart($_SESSION['id'])."'";
 			mysql_query($sql_point,$link);
 			//▲▲ポイント処理
+
+			//結果保持用メモリを開放する
+			mysql_free_result($result);
+
+			// MySQLへの接続を閉じる
+			mysql_close($link) or die("MySQL切断に失敗しました。");
 
 			//▲購入する処理
 		}else{
@@ -431,13 +439,13 @@
 			$sql_count = "SELECT * FROM buy ";
 			$result_count = mysql_query($sql_count,$link);
 
-			$rows = mysql_fetch_row($result_count);
+			$rows = intval(mysql_fetch_row($result_count)) + 1;
 
 			//時間を正しい形式にする
 			$time = (String)$_POST['buy_hour'].":".(String)$_POST['buy_minute'];
 
 			//▼▼購入情報にinsert
-			$sql_buy = "INSERT INTO buy VALUES('".quote_smart((String)($rows + 1))."',null,'".quote_smart(today())."','".quote_smart($_POST['buy_address'])."','".(String)$month."-".(String)$day."','".(String)$time."','')";
+			$sql_buy = "INSERT INTO buy VALUES('".quote_smart((String)$rows)."',null,'".quote_smart(today())."','".quote_smart($_POST['buy_address'])."','".quote_smart((String)$month."-".(String)$day)."','".quote_smart($time)."','')";
 			mysql_query($sql_buy,$link);
 			//▲▲購入情報にinsert
 
@@ -454,10 +462,11 @@
 										."AND gd.goods_details_number = '".quote_smart($_SESSION['goods_buy'][$i])."'";
 						$result_value = mysql_query($sql_value,$link);
 						$assoc_value = mysql_fetch_assoc($result_value);
+						mysql_data_seek($result_value, 0);
 						$value = intval($assoc_value['value']) * 1.08;
 
 						//カートテーブルにinsertするSQL文
-						$sql_cart = "INSERT INTO cart VALUES('".quote_smart((String)($rows + 1))."','".quote_smart($cart_number)."','".quote_smart($_SESSION['goods_buy'][$i])."',".quote_smart($value).",0,'".quote_smart(today())."')";
+						$sql_cart = "INSERT INTO cart VALUES('".quote_smart((String)$rows)."','".quote_smart($cart_number)."','".quote_smart($_SESSION['goods_buy'][$i])."',".quote_smart($value).",0,'".quote_smart(today())."')";
 						mysql_query($sql_cart,$link);
 
 						$cart_number = $cart_number + 1;
@@ -490,9 +499,17 @@
 					unset($_SESSION['cart_array']);
 					$_SESSION['cart_array'] = $array;
 					$_SESSION['cart_count'] = (String)$count;
+
+					$array = array();
 				}
 			}
 			//▲▲セッションの内容を適切なものに置き換える
+
+			//結果保持用メモリを開放する
+			mysql_free_result($result);
+
+			// MySQLへの接続を閉じる
+			mysql_close($link) or die("MySQL切断に失敗しました。");
 
 			//▲購入する処理
 		}
