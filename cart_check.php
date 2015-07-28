@@ -101,7 +101,7 @@
 				<!-- カートの中身 -->
 				<div id="cart_title"><font size="5">買い物かご</font></div>
 
-				 <div id="cart_contents" style=" height: 600px;">
+				 <div id="cart_contents" style=" height: <?php print intval($_SESSION['cart_count'])*130; ?>px;">
 				  <p>
 					<form method="POST" action="buy_step.php">
 						<table id="cart_check">
