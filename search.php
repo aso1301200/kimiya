@@ -10,6 +10,22 @@
 	session_start();
 ?>
 
+<!--PHP関数 -->
+<?php
+	//▼SQL文のエスケープ処理
+	function quote_smart($parameter)
+	{
+		// 数値以外をクオートする
+		if (!is_numeric($parameter)) {
+			$value = mysql_real_escape_string($parameter);
+		}else{
+			$value = (string)$parameter;
+		}
+		return $value;
+	}
+	//▲SQL文のエスケープ処理
+?>
+
 <!-- データベース準備 -->
 <?php
 	$url = "localhost";
@@ -27,7 +43,16 @@
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
 	//詳細、画像などを含めた商品情報のすべて
-	$result = mysql_query("SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
+	$sql = "SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain "
+			."FROM goods g, goods_details gd, goods_photo gp, photo p, direction d "
+			."WHERE g.goods_number = gd.goods_number "
+			."AND gd.goods_details_number = gp.goods_details_number "
+			."AND gp.photo_number = p.photo_number "
+			."AND gp.direction_code = d.direction_code "
+			."AND d.direction_code = '2' "
+			."AND g.goods_name LIKE '%".$_GET['search_item']."%'";
+
+	$result = mysql_query($sql, $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
 	//結果セットの行数を取得する
 	$rows = mysql_num_rows($result);
@@ -55,15 +80,15 @@
 				<!-- ここままでカテゴリ検索欄 -->
 
 				<?php
-					for ($count = 0;$count < 10;$count++){
-						if($count < $rows){
+					if($rows != 0){
+						for ($count = 0;$count < $rows;$count++){
 							//SELECT文から1行取得し配列"$array"に代入
 							$array = mysql_fetch_array($result,MYSQL_BOTH);
-							if($count == 0 || $count == 3 || $count == 6 || $count == 9){
+							if($count%3 == 0){
 								print "<div id=\"item_list\">";
 								print "<ul>";
 							}
-// 							printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_details_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
+	// 						printf( "<td><a href=\"item_tail.php?item=%s&color=%s\"><img src=\"images/test_images/%s\" class=\"img_goods\"/><div class=\"text_goods\">%s</div></a><td>",$array["goods_details_number"],$array["color_code"],$array["photo_name"],$array["goods_name"]);
 
 							print "<li class=\"type1\">";
 							print "<img src=\"images/test_images/".$array["photo_name"]."\" id=\"item_top_image\" style=\"width: 260px;height: 169px;float: none;\" />";
@@ -75,12 +100,11 @@
 							print "</li>";
 
 							//3.3.3.1という並び順で10個の商品を表示する
-							if($count == 2 || $count == 5 || $count == 8 || $count == 9){
+							if($count%3 == 2){
 								print "</ul>";
 								print "</div>";
 							}
-						}else{
-							break;
+
 						}
 					}
 
