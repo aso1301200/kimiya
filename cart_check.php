@@ -90,69 +90,96 @@
 	<p><?php include '/common/cssmenu.html';?></p>
 	<!-- ここまでタグ部メニュー -->
 
-	<!-- カートの中身 -->
-	<p>
-		<form method="POST" action="buy_step.php">
-			<table id="cart_check" border="1 solid">
-				<tr><th>購入</th><th>買い物かごに追加した商品</th><th>単品|税込</th><th>注文個数</th><th>削除</th></tr>
-				<!-- ここをループ文にする -->
-				<?php
-					//商品ごとの個数をカウントする array[商品詳細番号を入れる][個数を入れる]
-					$goods_count = array();
-					$goods_count[0][0] = "";
-					$goods_count[0][1] = "";
+	<!-- カート部分 -->
+		<div class="contents_item">
+			<div id="item_center">
 
-					for($i = 0;$i < $_SESSION['cart_count'];$i++){
-						$boolean_add = false;
+				<!-- カテゴリ検索欄 -->
+				<?php include '/common/item_category.html';?>
+				<!-- ここままでカテゴリ検索欄 -->
 
-						//同じ商品詳細番号が既に格納されているか調べる
-						for($j = 0;$j < count($goods_count);$j++){
-							if($goods_count[$j][0] === $result_array[$i]['goods_details_number']){
-								$boolean_add = true;
-								break;
-							}
-						}
+				<!-- カートの中身 -->
+				<div id="cart_title"><font size="5">買い物かご</font></div>
 
-						//同じ商品詳細番号があればカウントを進める、なければ配列に追加
-						if($boolean_add == true){
-							$goods_count[$j][1] = $goods_count[$j][1] + 1;
-						}else{
-							$goods_count[$j][0] = $result_array[$i]['goods_details_number'];
-							$goods_count[$j][1] = 1;
-						}
+				 <div id="cart_contents" style=" height: 600px;">
+				  <p>
+					<form method="POST" action="buy_step.php">
+						<table id="cart_check">
+							<!-- ここをループ文にする -->
+							<?php
+								//ポイントの合計を格納する変数
+								$point = 0;
+								$sum = 0;
 
-					}
+								if(!empty($_SESSION['cart_count'])){
+									//商品ごとの個数をカウントする array[商品詳細番号を入れる][個数を入れる]
+									$goods_count = array();
+									$goods_count[0][0] = "";
+									$goods_count[0][1] = "";
 
-					//ポイントの合計を格納する変数
-					$point = 0;
+									for($i = 0;$i < $_SESSION['cart_count'];$i++){
+										$boolean_add = false;
 
-					for($i = 0;$i < count($goods_count);$i++){
+										//同じ商品詳細番号が既に格納されているか調べる
+										for($j = 0;$j < count($goods_count);$j++){
+											if($goods_count[$j][0] === $result_array[$i]['goods_details_number']){
+												$boolean_add = true;
+												break;
+											}
+										}
 
-						$j = 0;
-						for($j = 0;$j < $_SESSION['cart_count'];$j++){
-							if($goods_count[$i][0] === $result_array[$j]['goods_details_number']){
-								print "<tr>";
-								print "<td><input type=\"checkbox\" name=\"item_buy\" value=\"".$result_array[$j]['goods_details_number']."\"></td>";
-								print "<td>".$result_array[$j]['goods_name']."<br /><img src=\"images/test_images/".$result_array[$j]['photo_name']."\" class=\"img_goods\" /></td>";
-								print "<td>".$result_array[$j]['value']."円(税込 ".$result_array[$j]['value']*1.08."円)</td>";
-								print "<td>".$goods_count[$i][1]."個</td>";
-								print "<td><input type=\"button\" id=\"button_delete\" onclick=\"deleteCart('".$result_array[$j]['goods_details_number']."')\" value=\"削除\" /\">";
+										//同じ商品詳細番号があればカウントを進める、なければ配列に追加
+										if($boolean_add == true){
+											$goods_count[$j][1] = $goods_count[$j][1] + 1;
+										}else{
+											$goods_count[$j][0] = $result_array[$i]['goods_details_number'];
+											$goods_count[$j][1] = 1;
+										}
 
-								$point = $point + intval($result_array[$j]['value']) * $goods_count[$i][1] * 0.1;
+									}
 
-								break;
+									print "<div id=\"lead\">商品を確認し、購入する商品にチェックをつけて購入ボタンを押してください。</div>";
 
-							}
-						}
+									for($i = 0;$i < count($goods_count);$i++){
 
-					}
+										$j = 0;
+										for($j = 0;$j < $_SESSION['cart_count'];$j++){
+											if($goods_count[$i][0] === $result_array[$j]['goods_details_number']){
+												print "<tr>";
+												print "<td><input type=\"checkbox\" name=\"item_buy[]\" value=\"".$result_array[$j]['goods_details_number']."\"></td>";
+												print "<td><img src=\"images/test_images/".$result_array[$j]['photo_name']."\" class=\"img_goods\" /></td>";
+												print "<td id=\"cart_td\">".$result_array[$j]['goods_name']."<br />".$result_array[$j]['value']."円(税込 ".$result_array[$j]['value']*1.08."円)";
+												print "</br>".$goods_count[$i][1]."個";
+												print "<br><input type=\"button\" id=\"button_delete\" onclick=\"deleteCart('".$result_array[$j]['goods_details_number']."')\" value=\"削除\" /\"></td>";
+												print "</tr>";
+												$point = $point + intval($result_array[$j]['value']) * $goods_count[$i][1] * 0.1;
+												$sum = $sum + intval($result_array[$j]['value'] * $goods_count[$i][1] * 1.08);
 
-				?>
-			</table>
-			<div id="cart_point">カート内全ての商品を購入することで<?php print $point;?>ポイント獲得できます。</div><input type="submit" name="button_buy" value="購入手続き" />
-		</form>
-	</p>
+												break;
 
+											}
+										}
+
+									}
+									print "</table>";
+									print "<div style=\"float: right\"><font size=\"6\" style=\"float: right\">合計金額：".$sum."</font>";
+									print "</br></br>";
+									print "<label style=\"float: right;  \">カート内全ての商品を購入することで".$point."ポイント獲得できます。</label>";
+									print "</br></br>";
+									print "<input type=\"submit\" id=\"cart_buy\" name=\"button_buy\" value=\"購入手続き\" /></div>";
+
+								}else{
+									print "</table>";
+									print "<p>カート内に商品が存在しません</p>";
+								}
+							?>
+						</table>
+					</form>
+				  </p>
+				</div>
+			</div>
+		</div>
+<div class="footer">copyright</div>
 </div>
 </body>
 </html>

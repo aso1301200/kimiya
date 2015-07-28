@@ -91,7 +91,7 @@
 				<!-- 会員情報、履歴、更新、退会 -->
 				<div id='mypage-body'>
 					<p>
-						<div id="cssmenu">
+						<div id="mypage_tab">
 							<ul>
 									<li><a href='?tag=home'><span>会員情報閲覧</span></a></li>
 									<li><a href='?tag=history'><span>購入履歴</span></a></li>
@@ -100,6 +100,7 @@
 							</ul>
 						</div>
 					</p>
+
 					<div id='mypage-body-inner'>
 					<?php
 					if (!empty($_SESSION['id'])){
@@ -144,13 +145,13 @@
 										print "<tr><td>職業</td><td>".$rows['job']."</td><td><input type=\"text\" name=\"job\"></td><tr>";
 										print "<tr><td>パスワード(半角英数)</td><td>&lt;この項目は表示されません&gt</td><td><input type=\"password\" name=\"password\"></td><tr>";
 										print "<tr><td>現在のポイント</td><td>".$rows['point']."</td><td></td><tr>";
-										print "<tr><td colspan=\"3\"><input type=\"submit\" value=\"変更\"></td></tr>";
+										print "<tr><td colspan=\"3\"><input type=\"submit\" value=\"変更\" class=\"mypage_botton\"></td></tr>";
 									print "</form>";
 								print "</table>";
 						}else if($_GET['tag'] === "delete"){
 							//退会
 								print "<table class=\"table_mypage_userinfo\">";
-									print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">退会ページです。<br />退会しますとアカウント情報の復帰はできません。<br />退会しますか？<br /><form method=\"POST\" action=\"user_delete.php\"><input type=\"submit\" name=\"user_delete\" value=\"退会します\"></form></div></td></tr>";
+									print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">退会ページです。<br />退会しますとアカウント情報の復帰はできません。<br />退会しますか？<br /><form method=\"POST\" action=\"user_delete.php\"><input type=\"submit\" name=\"user_delete\" value=\"退会します\" class=\"mypage_botton\"></form></div></td></tr>";
 									print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div></td></tr>";
 									print "<tr><td>ID</td><td>".$rows['user_id']."</td><tr>";
 									print "<tr><td>氏名</td><td>".$rows['name']."</td><tr>";

@@ -192,7 +192,7 @@
 					<!-- サイズ -->
 					  <p>サイズ：<?php print $assoc['size_name'];?></p><p></p><br>
 					<!-- 個数 -->
-					  <p>個数：
+					  <p>買い物かご合計個数：
 					  <?php
 					  	if(empty($_SESSION['cart_array'])){
 					  		print "0";
