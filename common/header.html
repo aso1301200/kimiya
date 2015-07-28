@@ -4,17 +4,11 @@
 
 			<div id="header-title-area">
 
-				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/sample_logo_01.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
+				<h1 class="site-title-img"><a href="index.php" title="ギャラリー（教育・スクール：ブルー）" rel="home"><img src="images/logo.png" alt="ギャラリー（教育・スクール：ブルー）"></a></h1>
 
 			</div><!-- #header-title-area -->
 
-<!-- 			<div id="header-widget-area"> -->
-<!-- 				<form role="search" method="get" id="searchform" class="searchform" action="*******"> -->
-<!-- 					<div> -->
-<!-- 						<input type="text" value="" name="s" id="s"> -->
-<!-- 						<input type="submit" id="searchsubmit" value="検索"> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
+
 
 					<!-- ▼ログインのフォーム、及び顧客のページへのリンク(コメントで挟んでいる内容を全てのページに入力してください)▼ -->
 					<div id="header-login-form">
@@ -23,8 +17,7 @@
 							//ログインしている場合の処理
 							print "<form method=\"post\" action=\"logout.php\">";
 							print "ようこそ！".$_SESSION['name']."さん！";
-							print "<a href=\"mypage.php?tag=home\">マイページへ</a>";
-							print "<input type=\"submit\" value=\"ログアウト\">";
+							print "<input type=\"submit\" value=\"ログアウト\" style=\"float: right; margin-top: 5px;\">";
 							print "</form>";
 
 						}else{
@@ -40,8 +33,6 @@
 					</div>
 					<!-- ▲ここまでがログインに関するフォームです(コメントで挟んでいる内容を全てのページに入力してください)▲ -->
 
-
-			<!-- </div> --><!-- #header-widget-area -->
 		</div><!-- .header-inner -->
 	</div><!-- #masthead -->
 

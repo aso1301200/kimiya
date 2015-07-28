@@ -71,19 +71,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 #header-title-area .site-title-img {
 	/*border: 1px solid #000000;*/
-
 }
 
 #header-widget-area {
 	/*border: 1px solid #000000;*/
 	padding: 0px;
-	position: absolute;
-	bottom: 3px;
-	right: 3px;
 }
 
 #header-widget-area .searchform {
-	float: right;
+/* 	float: right; */
 }
 
 #header-widget-area .searchform input#s {
@@ -128,7 +124,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 .footer {
 	width: 100%;
 	height: 20px;
-	margin-top: 20px;
+	margin-top: 0px;
 	background-color: #58ACFA;
 }
 
@@ -204,6 +200,7 @@ img.img_goods {
 	width: 200px;
 	height: 130px;
 	float: none;
+	vertical-align: middle;
 }
 
 .text-goods {
@@ -212,7 +209,7 @@ img.img_goods {
 
 /* item_top ----------------------------------------------------*/
 .contents_item {
-	height: 1000px;
+/* 	height: 1000px; */
 	background-color: #FAFAFA;
 	padding: 10px;
 }
@@ -226,6 +223,7 @@ img.img_goods {
 /*----カテゴリ検索欄----*/
 #item_category {
 	width: 300px;
+	height: 700px;
 	float: left;
 	margin-right: 10px;
 }
@@ -259,7 +257,7 @@ img.img_goods {
 #item_list ul {
 	list-style: none;
 	top: 0;
-	height: 280px;
+	height: 200px;
 	margin: 0;
 	padding: 0;
 	text-align: center;
@@ -561,7 +559,7 @@ input[type="radio"] {
 
 #item_cart {
 	width: 200px;
-	height: 220px;
+	height: 255px;
 	float: right;
 	margin-left: 10px;
 	background-color: #ffffff;
@@ -570,8 +568,8 @@ input[type="radio"] {
 }
 
 #cart_info {
-	width: 130px;
-	height: 120px;
+	width: 180px;
+	height: 160px;
 	margin: 10px;
 }
 
@@ -632,7 +630,7 @@ table.goods-table {
 }
 
 #header-login-form input[type=text] ,
-input[type=password]{
+#header-login-form input[type=password]{
    border-radius: 5px;
    -moz-border-radius: 5px;
    -webkit-border-radius: 5px;
@@ -686,16 +684,48 @@ input[type=password]{
 	margin: 30px;
 	padding: 20px;
 	float: right;
-	border: 1px solid #000000;
+}
+
+#mypage_tab {
+  display: table;
+  width: 100%;
+  margin: 0 0 1px;
+  padding: 0;
+}
+
+#mypage_tab li {
+  display: table-cell;
+  width: 20%;
+  border-right: 1px solid #fff;
+  background-color: #20b2aa;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#mypage_tab li a {
+  display: block;
+  cursor: pointer;
+  padding: 10px 0;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+#mypage_tab li a:hover {
+  background-color: rgba(205,92,92,.5);
 }
 
 #mypage-body-inner {
-	border: solid;
-	border: 5px;
+	border: 1px solid #f0f0f0;
+	border-bottom: 2px solid #ccc;
+	background-color: #ffffff;
+	width: 800px;
+	height: 500px;
+	padding: 15px;
 }
 
 /*---- 新規登録画面 ----*/
-#register_title {
+#register_title , #company_title {
 	width: 854px;
 	height: 25px;
 	background-color: #ffffff;
@@ -867,4 +897,112 @@ input[type=password]{
 	text-align: left;
 	vertical-align: middle;
 	text-align: left;
+}
+
+/*---- カート画面 ----*/
+#cart_title{
+	width: 854px;
+	height: 25px;
+	background-color: #ffffff;
+	padding: 10px;
+	margin-bottom: 20px;
+	float: right;
+	border: 1px solid #c0c0c0;
+}
+
+#cart_contents{
+	width: 794px;
+	padding: 40px;
+	background-color: #ffffff;
+	float: right;
+	border: 1px solid #c0c0c0;
+}
+
+#cart_check{
+	border: 1px solid #ffffff;
+	width: 500px;
+}
+
+#cart_td {
+	text-align: left;
+	vertical-align: middle;
+}
+
+#button_delete {
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -o-border-radius: 5px;
+   -ms-border-radius: 5px;
+   border:#a9a9a9 1px solid;
+   -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.2),0 0 2px rgba(0,0,0,0.3);
+   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2),0 0 2px rgba(0,0,0,0.3);
+   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2),0 0 2px rgba(0,0,0,0.3);
+   width:60px;
+   height:25px;
+   padding:0 3px;
+   cursor:pointer;
+   color:#333;
+   font-weight:bold;
+   background:#f5f5f5;
+   text-shadow:1px 1px 0px #fff;
+   float: right;
+}
+
+#cart_buy , .mypage_botton{
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -o-border-radius: 5px;
+   -ms-border-radius: 5px;
+   border:#a9a9a9 1px solid;
+   -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.2),0 0 2px rgba(0,0,0,0.3);
+   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2),0 0 2px rgba(0,0,0,0.3);
+   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2),0 0 2px rgba(0,0,0,0.3);
+   width:90px;
+   height:25px;
+   padding:0 3px;
+   cursor:pointer;
+   color:#333;
+   font-weight:bold;
+   background:#f5f5f5;
+   text-shadow:1px 1px 0px #fff;
+   float: right;
+}
+
+/* ----カンパニー---- */
+
+.email2 th, .message th{
+	width: 200px;
+	height: 45px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.email2 .cont {
+	width: 480px;
+	height: 45px;
+}
+
+.message .cont{
+	width: 550px;
+	height: 300px;
+}
+
+.box400{
+	width: 550px;
+	height: 300px;
+}
+
+#content_input2{
+	width: 794px;
+	height: 630px;
+	padding: 40px;
+	background-color: #ffffff;
+	float: right;
+	border: 1px solid #c0c0c0;
+}
+
+#botton_index{
+
 }

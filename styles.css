@@ -67,7 +67,9 @@
   background: url('images/bg.png');
 }
 #cssmenu ul {
+  width: 1250px;
   height: 59px;
+  margin: 0 auto;
 }
 #cssmenu ul li {
   float: left;
