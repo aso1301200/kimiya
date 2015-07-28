@@ -105,7 +105,7 @@
 					<?php
 					if (!empty($_SESSION['id'])){
 						//ログイン中の処理
-						if($_GET['tag'] === "home" || empty($_GET['tag'])){
+						if(empty($_GET['tag']) || $_GET['tag'] === "home"){
 							//会員情報閲覧
 								print "<table class=\"table_mypage_userinfo\">";
 									print "<tr><td colspan=\"3\"><div id=\"show_mypage_username\">".$rows['name']."さんの会員情報です。</div></td></tr>";
@@ -124,7 +124,166 @@
 								print "</table>";
 						}else if($_GET['tag'] === "history"){
 							//購入履歴
-							print "購入履歴";
+
+							//▼購入履歴情報を取得
+							// SELECT文(購入履歴)
+							$sql_history = "SELECT b.buy_date,b.send_address,b.send_date,b.send_time,gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain,c.value,c.used_point "
+									."FROM goods g, goods_details gd, goods_photo gp, photo p, direction d, buy b,cart c "
+									."WHERE g.goods_number = gd.goods_number "
+									."AND gd.goods_details_number = gp.goods_details_number "
+									."AND gp.photo_number = p.photo_number "
+									."AND gp.direction_code = d.direction_code "
+									."AND gd.goods_details_number = c.goods_details_number "
+									."AND b.buy_number = c.buy_number "
+									."AND d.direction_code = '2'"
+									."AND b.user_id = '".quote_smart($_SESSION['id'])."'";
+
+							// SELECT文実行、行数取得
+							$result_history = mysql_query($sql_history, $link);
+							$row_count = mysql_num_rows($result_history);
+							//▲購入履歴情報を取得
+
+							print "<div id=\"show_mypage_username\">".$rows['name']."さんの購入履歴です。</div>";
+								print "<table class=\"table_mypage_userinfo\">";
+									print "<tr><th>購入商品</th><th>購入価格</th><th>購入時に使用したポイント</th><th>購入日</th><th>届け先</th><th>届け日</th><th>届け時間</th></tr>";
+
+									if($row_count != 0){
+
+										//何ページ目かを示す変数
+										$page;
+
+										//▼最初のアクセス||仮にページ数が表示最大数を超えたものだった場合の対処の処理(応急処置として1ページ目を表示することにする)
+										if(empty($_GET['page']) || $row_count/2 < intval($_GET['page'])-1){
+											$page = 1;
+										}else{
+											$page = intval($_GET['page']);
+										}
+										//▲最初のアクセス||仮にページ数が表示最大数を超えたものだった場合の対処の処理(応急処置として1ページ目を表示することにする)
+
+										//▼表示処理
+										for($count = 0;$count < 2 && $count+($page-1)*2 < $row_count;$count++){
+											//SELECT文から1行取得し配列"$array"に代入
+											mysql_data_seek($result_history, $count+($page-1)*2);
+											$array = mysql_fetch_array($result_history,MYSQL_BOTH);
+
+											print "<tr>";
+											//購入商品
+											print "<td>";
+												print "<div align=\"left\">".$array['goods_name']."</div>";
+												print "<div align=\"right\"><img src=\"images/test_images/".$array['photo_name']."\" style=\"width: 260px;height: 169px;float: none;\" /></div>";
+												print "<br clear=\"all\">";
+											print "</td>";
+
+											//購入価格
+											print "<td>".$array['value']."円</td>";
+
+											//購入時に使用したポイント
+											print "<td>".$array['used_point']."</td>";
+
+											//購入日
+											$array_buy_date = array();
+											for($j = 0;$j < mb_strlen($array['buy_date']);$j++){
+												$array_buy_date[$j] = mb_substr($array['buy_date'], $j, 1);
+											}
+
+											print "<td>";
+												$j = 0;
+												//年
+												while($array_buy_date[$j] != "-"){
+													print $array_buy_date[$j];
+													$j++;
+												}
+												print "年";
+												$j++;
+												//月
+												while($array_buy_date[$j] != "-"){
+													print $array_buy_date[$j];
+													$j++;
+												}
+												print "月";
+												$j++;
+												//日
+												while($j < count($array_buy_date)){
+													print $array_buy_date[$j];
+													$j++;
+												}
+												print "日";
+											print"</td>";
+
+											//届け先
+											print "<td>".$array['send_address']."</td>";
+
+											//届け日
+											$array_send_date = array();
+											for($j = 0;$j < mb_strlen($array['send_date']);$j++){
+												$array_send_date[$j] = mb_substr($array['send_date'], $j, 1);
+											}
+
+											print "<td>";
+												$j = 0;
+												//月
+												while($array_send_date[$j] != "-"){
+													print $array_send_date[$j];
+													$j++;
+												}
+												print "月";
+												$j++;
+												//日
+												while($j < count($array_send_date)){
+													print $array_send_date[$j];
+													$j++;
+												}
+												print "日";
+											print"</td>";
+
+											//届け時間
+											$array_send_time = array();
+											for($j = 0;$j < mb_strlen($array['send_time']);$j++){
+												$array_send_time[$j] = mb_substr($array['send_time'], $j, 1);
+											}
+
+											print "<td>";
+												$j = 0;
+												//時
+												while($array_send_time[$j] != ":"){
+													print $array_send_time[$j];
+													$j++;
+												}
+												print "時";
+												$j++;
+												//分
+												while($j < count($array_send_time)){
+													print $array_send_time[$j];
+													$j++;
+												}
+												print "分";
+											print "</td>";
+											print "</tr>";
+										}
+										//▲表示処理
+
+										print "</table>";
+
+										//▼ページ切り替え
+										print "<p><div align=\"center\">";
+										if($row_count%10 == 0){
+											//$rowsが2で割り切れる場合のループ
+											for($i = 1;$i <= $row_count/2;$i++){
+												print "<a href=\"mypage.php?tag=history&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a>";
+											}
+										}else{
+											//$rowsが2で割り切れない場合のループ
+											for($i = 1;$i <= $row_count/2+1;$i++){
+												print "<a href=\"mypage.php?tag=history&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a>";
+											}
+										}
+										//▲ページ切り替え
+										print "</div></p>";
+									}else{
+										//会員が未購入の場合の処理
+										print "</table>";
+										print "<p>購入した商品がありません。</p>";
+									}
 
 						}else if($_GET['tag'] === "alter"){
 							//会員情報更新(3列目に入力フォーム)
