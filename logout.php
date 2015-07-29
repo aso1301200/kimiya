@@ -1,4 +1,7 @@
-
+<!-- sessionの開始(全てのページに入力してください) -->
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang=''>
 <head>
@@ -6,10 +9,7 @@
 </head>
 <body>
 
-<!-- sessionの開始(全てのページに入力してください) -->
-<?php
-	session_start();
-?>
+
 
 <!-- データベース準備 -->
 <?php
@@ -35,10 +35,20 @@
 ?>
 <!-- ここまでデータベース -->
 
+
+
 <div id="page">
 
 	<!-- ヘッダー部分 -->
-	<?php include '/common/header.html';?>
+	<?php
+	$destroyed = false;
+	if (!empty($_SESSION['id'])){
+		unset($_SESSION['id']);
+		session_destroy();
+		$destroyed = true;
+	}
+	include '/common/header.html';
+	?>
 	<!-- ここまでヘッダー部分 -->
 
 	<div class="clear"></div>
@@ -65,8 +75,7 @@
 				 * 		ほぼ全ページに配置するログアウトボタンから一元化してここにアクセスする
 				 * 		アクセス後は元のページに戻る
 				 */
-				if (!empty($_SESSION['id'])){
-					session_destroy();
+				if ($destroyed == true){
 					print "<div id=\"lead\">ログアウトが完了しました。</div>";
 					print "<a href=\"".$_SERVER['HTTP_REFERER']."\" id=\"botton_index\">前の画面に戻る</a>";
 				}else{
