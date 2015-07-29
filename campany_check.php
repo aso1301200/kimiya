@@ -53,24 +53,15 @@
 		<?php include '/common/item_category.html';?>
 		<!-- ここままでカテゴリ検索欄 -->
 
-
-
 		<!-- 問い合わせ -->
 		<div id="company_title"><font size="5">お問い合わせ</font></div>
-		<div id="content_input3">
-		  <div id="lead">メールが送信されました。引き続きショッピングをお楽しみください。</div>
-
-
-		  <div id="">
-		      <a href="index.php"id="botton_index">ホームへ</a>
-		  </div>
-
-
-	  	</div>
+			<div id="content_input3">
+			  <div id="lead">メールが送信されました。引き続きショッピングをお楽しみください。</div>
+			  <div><a href="index.php"id="botton_index">ホームへ</a></div>
+		  	</div>
 	  	</div>
 
 </div>
 <div class="footer">copyright</div>
-
 </body>
 </html>

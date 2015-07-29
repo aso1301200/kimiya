@@ -119,11 +119,13 @@
 			          </tr>
 	        		</tbody>
 	        	  </table>
-	        	 </form>
+	        	 </form></br></br>
 
-		        <div class="tblareabtn button">
-		          <p><input type="submit" class="box150 confirm" alt="確認ページへ" name="confirm" id="confirm"></p>
-		        </div>
+	        	 <div>
+			      <a href="campany_check.php"id="botton_index">送信</a>
+				</div>
+
+				</div>
 			</div>
 
 
