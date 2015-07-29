@@ -66,7 +66,6 @@
 			$result_array[$i]['value'] = $array['value'];
 		}
 	}
-
 ?>
 <!-- ここまでデータベース -->
 
@@ -101,7 +100,7 @@
 				<!-- カートの中身 -->
 				<div id="cart_title"><font size="5">買い物かご</font></div>
 
-				 <div id="cart_contents" style=" height: <?php print intval($_SESSION['cart_count'])*130; ?>px;">
+				 <div id="cart_contents" style=" height: <?php print count($_SESSION['cart_array'])/2*130 + 50; ?>px;">
 				  <p>
 					<form method="POST" action="buy_step.php">
 						<table id="cart_check">
