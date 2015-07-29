@@ -51,8 +51,8 @@
 				<!-- カテゴリ検索欄 -->
 				<?php include '/common/item_category.html';?>
 				<!-- ここままでカテゴリ検索欄 -->
-
-				<div id="cart_contents" >
+				<div id="search_title"><font size="5">検索結果</font></div>
+				<div id="content_search">
 					<p>
 						<?php
 							if(!empty($_GET['search_item'])){
@@ -128,7 +128,7 @@
 									}
 
 									//▼ページ切り替え
-									print "<p><div align=\"center\">";
+									print "<p><div align=\"center\" margin-bottom=\"10px\">";
 									if($rows%10 == 0){
 										//$rowsが10で割り切れる場合のループ
 										for($i = 1;$i <= $rows/10;$i++){
@@ -141,7 +141,7 @@
 										}
 									}
 									//▲ページ切り替え
-									print "</div></p>";
+									print "</p>";
 								}else{
 									print "<p>お探しの商品は見つかりませんでした。</p>";
 								}
@@ -165,5 +165,6 @@
 		</div>
 
 </div>
+<div class="footer">copyright</div>
 </body>
 </html>

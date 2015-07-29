@@ -58,7 +58,7 @@
 		<div id="content_input">
 		  <div id="lead">お客様の情報を確認し、「登録」ボタンを押して下さい。</div>
 		  <div id="input_table">
-		    <form name="form1" id="form1" method="post" action="?">
+		    <form name="form1" id="form1" method="post" action="user_insert.php">
 		    <table summary="会員登録フォーム">
                   <tbody><tr class="table_user">
 		            <th>お名前</th>
@@ -125,7 +125,7 @@
 		          </tbody></table>
 
 		        <div class="tblareabtn button">
-		          <p><input type="submit" class="box150 confirm" alt="確認ページへ" name="confirm" id="confirm"></p>
+		          <p><input type="submit" class="box150 confirm" value="登録" name="confirm" id="confirm"></p>
 		        </div></form>
 		  </div>
 		</div>
