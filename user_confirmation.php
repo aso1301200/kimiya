@@ -113,7 +113,58 @@
 		          <tr class="table_user">
 		            <th>職業</th>
 		            <td class="cont">
-		            <?php echo $_POST["job"]?>
+		            <?php
+		            //職業を格納する変数
+					$job = "";
+
+					switch(intval($_POST["job"])){
+						case 1:
+							$job = "社会人(営業・事務系)";
+							break;
+						case 2:
+							$job = "社会人(技術系)";
+							break;
+						case 3:
+							$job = "社会人(アパレル・繊維系)";
+							break;
+						case 4:
+							$job = "社会人(サービス・販売系)";
+							break;
+						case 5:
+							$job = "社会人(公務員・教員・農林水産)";
+							break;
+						case 6:
+							$job = "社会人(その他業種)";
+							break;
+						case 7:
+							$job = "パート・アルバイト";
+							break;
+						case 8:
+							$job = "専業主婦";
+							break;
+						case 9:
+							$job = "大学生";
+							break;
+						case 10:
+							$job = "大学院生";
+							break;
+						case 11:
+							$job = "専門学校生";
+							break;
+						case 12:
+							$job = "高校生";
+							break;
+						case 13:
+							$job = "中学生";
+							break;
+						case 14:
+							$job = "その他";
+							break;
+						default:
+							break;
+					}
+		            echo $job;
+		            ?>
 		            </td>
 		          </tr>
 		          <tr class="table_user">
@@ -129,6 +180,21 @@
 		        </div></form>
 		  </div>
 		</div>
+
+		<!-- セッションに格納 -->
+		<?php
+			$_SESSION['insert_name'] = $_POST["last_name"].$_POST["first_name"];
+			$_SESSION['insert_kana'] = $_POST["last_kana"].$_POST["first_kana"];
+			$_SESSION['insert_sex_code'] = $_POST["sex"];
+			$_SESSION['insert_birthday'] = $_POST["year"]."-".$_POST["month"]."-".$_POST["day"];
+			$_SESSION['insert_address_number'] = $_POST["address_number_head"]."-".$_POST["address_number_bottom"];
+			$_SESSION['insert_address'] = $_POST["address"];
+			$_SESSION['insert_phone_number'] = $_POST["phone_number_1"]."-".$_POST["phone_number_2"]."-".$_POST["phone_number_3"];
+			$_SESSION['insert_email'] = $_POST["email"];
+			$_SESSION['insert_job'] = $job;
+			$_SESSION['insert_password'] = $_POST["password"];
+		?>
+		<!-- セッションに格納 -->
 
 		<?php
 		$_SESSION['join'] = $_POST;
