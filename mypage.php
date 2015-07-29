@@ -266,7 +266,7 @@
 
 										//▼ページ切り替え
 										print "<p><div align=\"center\">";
-										if($row_count%10 == 0){
+										if($row_count%2 == 0){
 											//$rowsが2で割り切れる場合のループ
 											for($i = 1;$i <= $row_count/2;$i++){
 												print "<a href=\"mypage.php?tag=history&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a>";
