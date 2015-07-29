@@ -13,6 +13,19 @@
 
 <!-- データベース準備 -->
 <?php
+	//▼SQL文のエスケープ処理
+	function quote_smart($parameter)
+	{
+		// 数値以外をクオートする
+		if (!is_numeric($parameter)) {
+			$value = mysql_real_escape_string($parameter);
+		}else{
+			$value = (string)$parameter;
+		}
+		return $value;
+	}
+	//▲SQL文のエスケープ処理
+
 	$url = "localhost";
 	$user = "root";
 	$pass = "root";
@@ -27,11 +40,20 @@
 	// クエリを送信する
 	//文字化け対策
 	mysql_query("SET NAMES 'utf8'");
-	//詳細、画像などを含めた商品情報のすべて
-	$result = mysql_query("SELECT gd.goods_details_number,g.goods_name,p.photo_name,color_code,g.goods_explain FROM goods g, goods_details gd, goods_photo gp, photo p, direction d WHERE g.goods_number = gd.goods_number AND gd.goods_details_number = gp.goods_details_number AND gp.photo_number = p.photo_number AND gp.direction_code = d.direction_code AND d.direction_code = '2'", $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 
-	//結果セットの行数を取得する
-	$rows = mysql_num_rows($result);
+	//会員番号を割り振る処理
+	$sql_id = "SELECT * FROM user";
+	$result = mysql_query($sql_id,$link);
+
+	$rows = mysql_num_rows($result) + 1;
+
+	//割り振るID値
+	$id = "";
+	$id += (String)$rows;
+
+	//挿入するSQL文
+	$sql = "INSERT INTO user VALUES('".quote_smart($_SESSION['insert_name'])."','".quote_smart($_SESSION['insert_kana'])."','".quote_smart($_SESSION['insert_address'])."','".quote_smart($_SESSION['insert_phone_number'])."','".quote_smart($_SESSION['insert_email'])."','".quote_smart($_SESSION['insert_sex_code'])."','".$_SESSION['insert_birthday']."','".quote_smart($_SESSION['insert_job'])."','".$id."','".quote_smart($_SESSION['insert_password'])."','".quote_smart($_SESSION['insert_address_number'])."',0)";
+	mysql_query($sql, $link) or die("クエリの送信に失敗しました。<br />SQL:".$sql);
 ?>
 <!-- ここまでデータベース -->
 

@@ -75,7 +75,13 @@
 		          <tr class="table_user">
 		            <th>性別</th>
 		            <td class="cont">
-		            <?php echo $_POST["sex"]?>
+		            <?php
+		             if($_POST["sex"] === "1"){
+		             	echo "男性";
+		             }else{
+		             	echo "男性";
+		             }
+		             ?>
 		            </td>
 		          </tr>
 		          <tr class="table_user">
