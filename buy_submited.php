@@ -91,7 +91,7 @@
 				<?php include '/common/item_category.html';?>
 				<!-- ここままでカテゴリ検索欄 -->
 
-				<div id="company_title"><font size="5">お問い合わせ</font></div>
+				<div id="company_title"><font size="5">購入完了</font></div>
 				<div id="content_input3">
 				<?php
 					if(empty($_POST['submit_buy'])){
