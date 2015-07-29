@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang=''>
 <head>
@@ -55,25 +54,10 @@
 		<!-- ここままでカテゴリ検索欄 -->
 
 		<!-- 問い合わせ -->
-		<div id="company_title"><font size="5">ログアウト</font></div>
+		<div id="company_title"><font size="5">お問い合わせ</font></div>
 			<div id="content_input3">
-			  <?php
-				/*
-				 * ファイル名:loguot.php
-				 * 作成者：吉川
-				 * 概要：ログアウト処理を行うプログラム
-				 * 		ほぼ全ページに配置するログアウトボタンから一元化してここにアクセスする
-				 * 		アクセス後は元のページに戻る
-				 */
-				if (!empty($_SESSION['id'])){
-					session_destroy();
-					print "<div id=\"lead\">ログアウトが完了しました。</div>";
-					print "<a href=\"".$_SERVER['HTTP_REFERER']."\" id=\"botton_index\">前の画面に戻る</a>";
-				}else{
-					print "<div id=\"lead\">このページはログインしていないとアクセスできません。</div>";
-					print "<a href=\"index.php\" id=\"botton_index\">ホームへ</a>";
-				}
-			  ?>
+			  <div id="lead">メールが送信されました。引き続きショッピングをお楽しみください。</div>
+			  <div><a href="index.php"id="botton_index">ホームへ</a></div>
 		  	</div>
 	  	</div>
 
