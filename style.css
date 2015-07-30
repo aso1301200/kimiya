@@ -1113,13 +1113,18 @@ table.goods-table {
 /* ----検索画面---- */
 #content_search{
 	width: 874px;
-	height: 630px;
+	height: 850px;
 	padding: 0px;
 	background-color: #ffffff;
 	float: right;
 	border: 1px solid #c0c0c0;
 }
 
+#search_page{
+	height: 50px;
+	width: 874px;
+	align: center;
+}
 
 
 

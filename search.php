@@ -53,7 +53,6 @@
 				<!-- ここままでカテゴリ検索欄 -->
 				<div id="search_title"><font size="5">検索結果</font></div>
 				<div id="content_search">
-					<p>
 						<?php
 							if(!empty($_GET['search_item'])){
 								//▼データベース処理
@@ -128,20 +127,21 @@
 									}
 
 									//▼ページ切り替え
-									print "<p><div align=\"center\" margin-bottom=\"10px\">";
 									if($rows%10 == 0){
 										//$rowsが10で割り切れる場合のループ
 										for($i = 1;$i <= $rows/10;$i++){
-											print "<a href=\"search.php?search_item=".$_GET['search_item']."&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a>";
+											print "<div id=\"search_page\"><a href=\"search.php?search_item=".$_GET['search_item']."&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a></div";
 										}
 									}else{
+										print "<div id=\"search_page\">";
 										//$rowsが10で割り切れない場合のループ
 										for($i = 1;$i <= $rows/10+1;$i++){
 											print "<a href=\"search.php?search_item=".$_GET['search_item']."&page=".$i."\" style=\"border:solid; margin:5px;\">".$i."</a>";
 										}
+										print "</div>";
 									}
 									//▲ページ切り替え
-									print "</p>";
+									print "";
 								}else{
 									print "<p>お探しの商品は見つかりませんでした。</p>";
 								}
@@ -159,7 +159,6 @@
 							}
 
 						?>
-					</p>
 				</div>
 			</div>
 		</div>
